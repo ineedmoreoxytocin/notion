@@ -1,8 +1,20 @@
-<body>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+</style>
+
 <style>
 #reminder{
 	font-size: 10px;
     padding: 5px;
+}
+#lbl{
+	font-family: 'Dancing Script', cursive;
+	font-size: 20px;
+}
+#dateOfToday{
+	font-family: 'Dancing Script', cursive;
+	font-size: 18px;
 }
 body{
     background-color: #e6fcf7;
@@ -14,6 +26,14 @@ body{
     height:85%
 }
 </style>
+</head>
+
+<body>
+    <div id="lbl"></div>
+    <div id="dateOfToday"></div>
+    <br>
+    <div id="reminder"></div>
+</body>
 
 <script>
     var weekday = new Array(7);
@@ -26,7 +46,6 @@ body{
     weekday[6] = "Saturday";
     
     var monthname = new Array(12);
-    monthname[0] = "December";
     monthname[1] = "January";
     monthname[2] = "February";
     monthname[3] = "March";
@@ -38,6 +57,7 @@ body{
     monthname[9] = "September";
     monthname[10] = "October";
     monthname[11] = "November";
+    monthname[12] = "December";
 
 
     
@@ -82,4 +102,3 @@ body{
     
         
 </script>
-</body>
