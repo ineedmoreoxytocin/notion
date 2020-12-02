@@ -20,7 +20,7 @@
   position: fixed;
   z-index: 9;
   left: -1%;
-  top: 60%;
+  top: 10%;
   background-opacity: 0;
   overflow-x: show;
 }
@@ -64,10 +64,11 @@
   padding: 8px 10px;
   position: absolute;
   z-index: 3;
-  bottom: 100%;
+  bottom: 90%;
   left: 50%;
   margin-left: -80px;
   font-size:12px;
+  border-radius: 8px;
 }
 
 
@@ -76,9 +77,9 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 20%;
   margin-left: -5px;
-  border-width: 5px;
+  border-width: 7px;
   border-style: solid;
   border-color: #6fe8e4 transparent transparent transparent;
 }
@@ -110,7 +111,7 @@
 
 <div class="sidenav">
 <a></a>
-  <div class="popup" onmouseenter="calltalk()"  onmouseleave="closetalk()" onclick="callmenu()"><img id="doriosty" src="https://4.bp.blogspot.com/-DUk16CGxmsE/XoUE_gTqMII/AAAAAAAAIa8/IxMDpsNZw4MbXpwViS_OLgPDhIZ-hzTnwCLcBGAsYHQ/s1600/face1.gif" alt="Doriosty" />  
+  <div class="popup" onmouseenter="calltalk()"  onmouseleave="closetalk()" onclick="callmenu()"><img id="doriosty" src="https://github.com/ineedmoreoxytocin/notion/blob/main/friend/normal.png?raw=true" alt="Doriosty" style="width:300px;height:auto;">  
   <span class="popuptext" id="talk">
   <p id="words"></p>
   </span>
@@ -129,10 +130,12 @@
 var doriosty = {
   Name: "多利若丝缇",
   engName: "Doriosty",
-  normal: "https://4.bp.blogspot.com/-DUk16CGxmsE/XoUE_gTqMII/AAAAAAAAIa8/IxMDpsNZw4MbXpwViS_OLgPDhIZ-hzTnwCLcBGAsYHQ/s1600/face1.gif",
-  happy: "https://3.bp.blogspot.com/-vQ9ROy2VsbM/XoUE_qTtvII/AAAAAAAAIa0/6WEGoX-FMPkRgzpPa2w4r4GVtYg2x7atgCLcBGAsYHQ/s1600/face2.gif",
-  sad: "https://4.bp.blogspot.com/-Lvo2Msj0DCo/XoUE_ny9pnI/AAAAAAAAIa4/gUysMLrL0Ock5QHellWYUwlZ7v51vKupgCLcBGAsYHQ/s1600/face3.gif",
-  blink: "https://3.bp.blogspot.com/-JfFO-7LGVAw/XoVU9GyXypI/AAAAAAAAIbM/uxDVyB_xWiwkfM4jprzub8ebnNk0SSlfwCLcBGAsYHQ/s1600/face4.gif"
+  normal: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/normal.png?raw=true",
+  happy: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/happy.png?raw=true",
+  sad: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/sad.png?raw=true",
+  angry: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/angry.png?raw=true",
+  noexp: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/noexp.png?raw=true",
+  plead: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/plead.png?raw=true",
 };
 
 // Display some data from the object:
@@ -186,7 +189,7 @@ document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 11
 "今天不学习…………明天火葬场！",
 "你看看都几点了！",
 "你今天学够八个小时了嘛！",];
-document.getElementById("doriosty").src=doriosty.sad;
+document.getElementById("doriosty").src=doriosty.angry;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 3)];
 } else {
   var time = new Date().getHours();
