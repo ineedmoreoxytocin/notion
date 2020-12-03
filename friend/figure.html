@@ -1,17 +1,6 @@
 
+
 <style>
-
-.openbtn1 {
-  font-size: 12px;
-  cursor: pointer;
-  background-color: #ffffff00;
-  color: grey;
-  border: none;
-}
-
-.openbtn1:hover {
-  color: #aeeff5;
-}
 
 /* Style the side navigation */
 .sidenav {
@@ -111,7 +100,7 @@
 
 <div class="sidenav">
 <a></a>
-  <div class="popup" onmouseenter="calltalk()"  onmouseleave="closetalk()" onclick="callmenu()"><img id="doriosty" src="https://github.com/ineedmoreoxytocin/notion/blob/main/friend/normal.png?raw=true" alt="Doriosty" style="width:300px;height:auto;">  
+  <div class="popup" onclick="callmenu()"><img id="doriosty" src="https://github.com/ineedmoreoxytocin/notion/blob/main/friend/normal.png?raw=true" alt="Doriosty" style="width:300px;height:auto;">  
   <span class="popuptext" id="talk">
   <p id="words"></p>
   </span>
@@ -135,6 +124,8 @@ var doriosty = {
   plead: "https://github.com/ineedmoreoxytocin/notion/blob/main/friend/plead.png?raw=true",
 };
 </script>
+
+
 <script>
 // greetings
 function callmenu() {
@@ -155,12 +146,15 @@ if (time < 5) {
   document.getElementById("doriosty").src=doriosty.normal;
  }
  </script>
+
  <script>
 // random talk
+var talk = setInterval(calltalk, 30000);
 function calltalk() {
+  var stoptalk = setTimeout(closetalk, 5000);
   var popup = document.getElementById("talk");
   popup.classList.toggle("show");
-  if (Math.random() < 0.5) {
+  if (Math.random() < 0.3) {
   var words = [
 "今天的任务进行的如何了？",
 "偶尔也要放松一下~",
@@ -205,23 +199,23 @@ document.getElementById("doriosty").src=doriosty.plead;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 2)];
 }
 else {
-   text = "你好，很高兴见到你~";
-   document.getElementById("words").innerHTML = text;
-   document.getElementById("doriosty").src=doriosty.happy;
+   var words = [
+"加油！",
+"请继续努力！",];
+document.getElementById("doriosty").src=doriosty.normal;
+document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 2)];
    }
  }
- </script>
- 
- <script>
-  function closetalk() {
+function closetalk() {
   var popup = document.getElementById("talk");
-  popup.classList.toggle("show");
+  popup.classList.toggle("hide");
   document.getElementById("doriosty").src=doriosty.normal;
-  }
-  </script>
+  clearTimeout(stoptalk);
+}
+</script>
+ 
 
 <script>
-
 setTimeout(function(){ 
 var popup = document.getElementById("talk");
   popup.classList.toggle("show");
@@ -245,11 +239,12 @@ var time = new Date().getHours();
   } else {
     text = "你好，很高兴见到你~";
   }
+  document.getElementById("doriosty").src=doriosty.happy;
    document.getElementById("words").innerHTML = text;
-   document.getElementById("doriosty").src=doriosty.happy;
    }, 3000);
 
-setTimeout(function(){ var popup = document.getElementById("talk");
+setTimeout(function(){ 
+  var popup = document.getElementById("talk");
   popup.classList.toggle("show");
   document.getElementById("doriosty").src=doriosty.normal; }, 6000);
 
