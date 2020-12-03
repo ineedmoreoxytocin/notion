@@ -150,9 +150,9 @@ if (time < 5) {
 
  <script>
 // random talk
-var talk = setInterval(calltalk, 10000);
+var talk = setInterval(calltalk, 30000);
 function calltalk() {
-  var stoptalk = setTimeout(closetalk, 1000);
+  var stoptalk = setTimeout(closetalk, 5000);
   var popup = document.getElementById("talk");
   popup.classList.toggle("show");
   var face = Math.random();
