@@ -1,5 +1,6 @@
 
 
+
 <style>
 
 /* Style the side navigation */
@@ -149,12 +150,13 @@ if (time < 5) {
 
  <script>
 // random talk
-var talk = setInterval(calltalk, 30000);
+var talk = setInterval(calltalk, 10000);
 function calltalk() {
-  var stoptalk = setTimeout(closetalk, 5000);
+  var stoptalk = setTimeout(closetalk, 1000);
   var popup = document.getElementById("talk");
   popup.classList.toggle("show");
-  if (Math.random() < 0.3) {
+  var face = Math.random();
+  if (face < 0.3) {
   var words = [
 "今天的任务进行的如何了？",
 "偶尔也要放松一下~",
@@ -165,45 +167,50 @@ function calltalk() {
 "请不要放弃~",
 "请继续努力！",
 "今天英格瑞特也要元气满满地努力学习~",
-  ];
+"请坚持下去！"
+];
 document.getElementById("doriosty").src=doriosty.happy;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 9)];
-} else  if (Math.random() < 0.4) {
+} else  if (face < 0.4) {
  var words = [
 "今天不学习…………明天火葬场！",
 "你看看都几点了！",
 "你今天学够八个小时了？",
 "请不要让明天的自己讨厌今天的自己，好吗？",
-"去学习，我没在跟你商量。",   
- ];
+"去学习，我没在跟你商量。",
+"你会为拖延付出代价的……"
+];
 document.getElementById("doriosty").src=doriosty.angry;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 5)];
-} else  if (Math.random() < 0.5) {
+} else  if (face < 0.5) {
  var words = [
 "请去学习！",
 "求求你再去学习一会嘛……",
 "你不学习的话……我…我就会哭！",
 "你看我可爱吗？可爱的话就再陪我学一会嘛~",
-"英格瑞特再努力一会好不好？马上就可以休息了！",   
+"英格瑞特再努力一会好不好？马上就可以休息了！", 
+"再坚持一会~！"
 ];
 document.getElementById("doriosty").src=doriosty.plead;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 5)];
 }
-else  if (Math.random() < 0.6) {
+else  if (face < 0.6) {
  var words = [
 "可以更努力一点吗？",   
 "昨天晚上做了一个好可怕的梦……梦到英格瑞特一整天都没有学习！",
- ];
+"我哭了，除非你学习。"
+];
 document.getElementById("doriosty").src=doriosty.sad;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 2)];
 }
-else  if (Math.random() < 0.7) {
+else  if (face < 0.7) {
  var words = [
 "啊啊……你再不学习…杀了你哦。",
 "英格瑞特不肯学习的日子十分无趣。",
 "看看这个小垃圾，在这里浪费时间。",
 "看着懒惰的英格瑞特，我只觉得心累。",
- ];
+"明天的英格瑞特会想要杀了你。"
+];
 document.getElementById("doriosty").src=doriosty.noexp;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 4)];
 }
@@ -222,8 +229,8 @@ else {
 "正是因为没有看到答案，所以才值得走下去，而我们就是最好的答案。",
 "你要有强大的内心。要有任凭时间流逝，不会磨折和屈服的信念。",
 "不是因为在象牙塔中，才说出我爱世界这样的话。是知道外面的黑，脏，丑陋之后，还要说出这样的话。",
-"我要你相信温暖，美好，信任，尊严，坚强。我不要你颓废，空虚，迷茫，糟践自己，伤害别人。",
-   ];
+"我要你相信温暖，美好，信任，尊严，坚强。我不要你颓废，空虚，迷茫，糟践自己，伤害别人。"
+];
 document.getElementById("doriosty").src=doriosty.normal;
 document.getElementById("words").innerHTML = words[Math.floor(Math.random() * 14)];
    }
