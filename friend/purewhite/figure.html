@@ -4,8 +4,8 @@ width: 300px;
 height: 300px;
 position: fixed;
 z-index: 10;
-right: -100px;
-top: 60%;
+left: -10%;
+top: 10%;
 }
 div#head{
 position: absolute;
@@ -24,8 +24,8 @@ border-color: #6fe8e4;
 width: 150px;
 height: auto;
 position: fixed;
-bottom: 280px;
-right: 10px;
+top: 10px;
+left: 10px;
 visibility: hidden;
 border-radius: 8px;
 display: inline;
@@ -119,10 +119,12 @@ cheertalk = [
 stroketalk = [
 "#[normal]有什么事吗？",
 "#[angry]请去学习，不要烦我。",
-"#[sad]快去学习！"];
+"#[angry]这样做有意思吗？",
+"#[sad]快去学习！",
+"#[cold]再烦我，杀了你哦。",
+"#[sad]学习比烦我好玩多啦！"];
 
 function init(){
- change_face(NORMAL);
  greet();
 }
 function greet(){ 
@@ -147,6 +149,7 @@ var time = new Date().getHours();
     text = "你好，很高兴见到你~";
   }
   show_baloon(text);
+   change_face(NORMAL);
 }
 
 function change_face(face){
@@ -214,8 +217,8 @@ function hide_baloon(str){
 }
 </script>
 
-<body>
-<div id="mascot"  onload="init()" ondblclick="cheer()">
+<body onload="greet()">
+<div id="mascot" ondblclick="cheer()">
     <div id="head" onmousemove="stroke()" onmouseout="stroke_reset()"></div>
 </div>
 <div id="baloon" ondblclick="hide_baloon()">
