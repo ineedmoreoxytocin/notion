@@ -180,12 +180,12 @@
         function updateTimer(){
             secs -= 1;  //以1s为单位进行时间更新
             if(secs < 0){
-                //countdown is finished
-
-                //Play audio
-           var audio = new Audio('https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3');
-           audio.play();
+            //countdown is finished
                alert("Mission accomplished~ ♪(^∇^*)");
+               window.parent.focus();
+            //Play audio
+           var audio = new Audio('https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3');
+           audio.play();   
                     
             //toggle break an session
             $scope.fillColor = '#a1e6e3';
