@@ -5,3 +5,4 @@
 * Pomodoro timer: https://ineedmoreoxytocin.github.io/notion/pomodoro.html
 * Kanban (version 1): https://ineedmoreoxytocin.github.io/notion/friend/figure.html
 * Kanban (version 2): https://ineedmoreoxytocin.github.io/notion/friend/purewhite/figure.html
+* Backgroun music side bar: https://ineedmoreoxytocin.github.io/notion/bgm.html
