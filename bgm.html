@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 5px;
+  color:grey;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: grey;
+  display: inline-block;
+  margin-right: 0px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */'
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
+</head>
+<body>
+<iframe src="https://www.rainymood.com/" width="100%" height="130" style="border:none; overflow-y:hidden;">
+</iframe>
+<ul id="myUL">
+  <li><span class="caret"> Background music</span>
+    <ul class="nested">  
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/yXeQj0Zg-rA?list=PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/5qap5aO4i9A?list=PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/Dx5qFachd3A?list=PLCuFZooD8Bx0ZTYqHkTxNKEmLKM1yqVpd" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/wd7oetHd0EE?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </ul>
+  </li>
+</ul>
+<ul id="myUL">
+  <li><span class="caret"> White noise</span>
+    <ul class="nested">
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/4vIQON2fDWM?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/c0_ejQQcrwI?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/Jll0yqdQclw?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="50" src="https://www.youtube.com/embed/dUF9XXco8QA?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </ul>
+  </li>
+</ul>
+
+<script>
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret-down");
+  });
+}
+</script>
+</body>
+</html>
