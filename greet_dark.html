@@ -1,0 +1,104 @@
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+</style>
+
+<style>
+#reminder{
+	font-size: 10px;
+    padding: 5px;
+}
+#lbl{
+	font-family: 'Dancing Script', cursive;
+	font-size: 20px;
+}
+#dateOfToday{
+	font-family: 'Dancing Script', cursive;
+	font-size: 18px;
+}
+body{
+    background-color: #434544;
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+    text-align: left;
+    line-height: 1.5;
+    height:85%
+}
+</style>
+</head>
+
+<body>
+    <div id="lbl"></div>
+    <div id="dateOfToday"></div>
+    <br>
+    <div id="reminder"></div>
+</body>
+
+<script>
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+    var monthname = new Array(12);
+    monthname[1] = "January";
+    monthname[2] = "February";
+    monthname[3] = "March";
+    monthname[4] = "April";
+    monthname[5] = "May";
+    monthname[6] = "June";
+    monthname[7] = "July";
+    monthname[8] = "August";
+    monthname[9] = "September";
+    monthname[10] = "October";
+    monthname[11] = "November";
+    monthname[12] = "December";
+
+
+    
+    var today = new Date();
+    var hrs = today.getHours();
+    var dayOfWeek = weekday[today.getDay()];
+    var dayOfMonth = monthname[today.getMonth()+1];
+    var date = dayOfWeek + ", " + dayOfMonth + " " + today.getDate() + "." ;
+
+
+    var greet;
+
+
+    if (hrs < 12)
+        greet = 'Good morning  ';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good afternoon ';
+    else if (hrs >= 17 && hrs <= 20)
+        greet = 'Good evening  ';
+    else if (hrs >= 20 && hrs <= 24)
+        greet = 'Good night  ';
+        
+    var note;
+
+
+    if (hrs < 12)
+        note = 'Time to do Anki, exercise, and start working!<br>Remember to record sleep time and capture your dream.';
+    else if (hrs >= 12 && hrs <= 17)
+        note = 'Use your best efforts!';
+    else if (hrs >= 17 && hrs <= 20)
+        note = 'Please keep working!';
+    else if (hrs >= 20 && hrs <= 24)
+        note = 'Remember to check habits and write a daily reflection. <br>Please sleep before eleven p.m.';
+
+
+    document.getElementById('lbl').innerHTML =
+        greet+= "*ଘ(੭*ˊᵕˋ)੭* ";
+    document.getElementById('dateOfToday').innerHTML =
+        `Today is ${date}`;
+    document.getElementById('reminder').innerHTML =
+        note;
+    
+        
+</script>
