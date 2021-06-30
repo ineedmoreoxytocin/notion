@@ -6,7 +6,10 @@
 <style>
 #reminder{
 	font-size: 10px;
-    padding: 5px;
+    padding-top: 10px;
+}
+#quote{
+	font-size: 10px;
 }
 #lbl{
 	font-family: 'Dancing Script', cursive;
@@ -22,7 +25,8 @@ body{
     color: #fff;
     padding: 5px;
     text-align: left;
-    line-height: 1.5;
+    line-height: 1.2;
+    overflow: hidden;
 }
 </style>
 </head>
@@ -30,8 +34,8 @@ body{
 <body>
     <div id="lbl"></div>
     <div id="dateOfToday"></div>
-    <br>
     <div id="reminder"></div>
+    <div id="quote"></div>
 </body>
 
 <script>
@@ -83,21 +87,44 @@ body{
 
 
     if (hrs < 12)
-        note = 'Time to do Anki, exercise, and start working!<br>Remember to record sleep time and capture your dream.';
+        note = 'Time to do Anki, exercise, and start working!';
     else if (hrs >= 12 && hrs <= 17)
         note = 'Use your best efforts!';
     else if (hrs >= 17 && hrs <= 20)
         note = 'Please keep working!';
     else if (hrs >= 20 && hrs <= 24)
         note = 'Remember to check habits and write a daily reflection. <br>Please sleep before eleven p.m.';
+    
+    const quotes = [];
+        quotes[0]= "“It is easier to resist at the beginning than at the end.”";
+        quotes[1]= "“Someday is not a day of the week.”";
+        quotes[2]= "“Success is not obtained overnight. It comes in instalments; you get a little bit today, a little bit tomorrow until the whole package is given out. The day you procrastinate, you lose that day’s success.”";
+        quotes[3]= "“Doing things at the last minute reminds us of the importance of doing things at the first minute.”";
+        quotes[4]= "“You cannot escape the responsibility of tomorrow by evading it today.”";
+        quotes[5]= "“By what right do I, who have wasted this day, make claims on tomorrow?”";
+        quotes[6]= "“If you want to get ahead in life, I’ve found that perhaps the most useless word in the world is “tomorrow.”";
+        quotes[7]= "“Don’t let what you cannot do interfere with what you can do.”";
+        quotes[8]= "“Only put off until tomorrow what you are willing to die having left undone”";
+        quotes[9]= "“Do first what you don’t want to do most.”";
+        quotes[10]= "“Do something instead of killing time. Because time is killing you.”";
+        quotes[11]= "“What is deferred is not avoided.”";
+        quotes[12]= "“A year from now you may wish you had started today.”";
+        quotes[13]= "“Procrastination makes easy things hard and hard things harder.”";
+        quotes[14]= "“You don’t have to be great to start, but you have to start to be great.”";
+        quotes[15]= "“There are no shortcuts to any place worth going.”";
+        quotes[16]= "“Success is the sum of small efforts, repeated.”";
+        quotes[17]= "“The best way to predict your future is to create it.”";
+        quotes[18]= "“If you want to make an easy job seem mighty hard, just keep putting off doing it.”";
+        quotes[19]= "“How soon ‘not now’ becomes ‘never’.”";
 
 
     document.getElementById('lbl').innerHTML =
-        greet;
+        greet+",";
     document.getElementById('dateOfToday').innerHTML =
         `Today is ${date}`;
     document.getElementById('reminder').innerHTML =
         note;
+    document.getElementById("quote").innerHTML = quotes[Math.floor(Math.random() * 19)];
     
         
 </script>
