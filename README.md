@@ -8,3 +8,4 @@
 * Kanban (version 2): https://ineedmoreoxytocin.github.io/notion/friend/purewhite/figure.html
 * Backgroun music side bar: https://ineedmoreoxytocin.github.io/notion/bgm.html
 * Music side bar with prettier UI: https://ineedmoreoxytocin.github.io/notion/bgm2.html
+* Music side bar with pretty UI (extended): https://ineedmoreoxytocin.github.io/notion/bgm3.html
