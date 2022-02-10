@@ -44,7 +44,7 @@ progress::-webkit-progress-value {
 .timer {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%, -50%);
   padding: 20px;
   text-align: center;
@@ -61,36 +61,37 @@ progress::-webkit-progress-value {
 }
 
 .mode-button {
-  font-size: 13px;
-  height: 28px;
+  font-size: 10px;
+  height: auto;
   cursor: pointer;
   box-shadow: none;
-  font-weight: 300;
+  font-weight: 600;
   color: #fff;
   border: 1px solid transparent;
-  margin: 0px;
+  margin: 5px -15px;
   border-radius: 4px;
-  padding: 2px 5px;
+  padding: 5px 5px;
   background: none;
 }
 
 .mode-button.active {
-  border-color: #fff;
+  background-color: #fff;
+  color: var(--bgc);
 }
 
 .main-button {
   cursor: pointer;
   box-shadow: rgb(235, 235, 235) 0px 6px 0px;
   font-size: 18px;
-  height: 50px;
+  height: 40px;
   text-transform: uppercase;
-  color: hsl(175, 26%, 41%);
+  color: var(--bgc);
   font-weight: bold;
-  width: 100px;
+  width: 90px;
   background-color: white;
   border-width: initial;
   border-style: none;
-  margin: 15px 0px 0px;
+  margin: 10px 20px 0px;
   padding: 0px 12px;
   border-radius: 4px;
   transition: color 0.5s ease-in-out 0s;
@@ -115,6 +116,14 @@ button:focus, button:active {
     font-size: 50px;
   }
 }
+.left {
+width: 5%;
+float: left;
+}
+.right {
+width: 65%;
+float: right;
+}
 
     </style>
   </head>
@@ -123,29 +132,33 @@ button:focus, button:active {
       <progress id="js-progress" value="0"></progress>
       <div class="progress-bar"></div>
       <div class="timer">
+      	<div class="left">
         <div class="button-group mode-buttons" id="js-mode-buttons">
           <button
             data-mode="pomodoro"
             class="button active mode-button"
             id="js-pomodoro"
           >
-            💙
+           STUDY
           </button>
           <button
             data-mode="shortBreak"
             class="button mode-button"
             id="js-short-break"
           >
-            💗
+            BREAK
           </button>
           <button
             data-mode="longBreak"
             class="button mode-button"
             id="js-long-break"
           >
-            💚
+            LONG
+			BREAK
           </button>
         </div>
+        </div>
+        <div class="right">
         <div class="clock" id="js-clock">
           <span id="js-minutes">35</span>
           <span class="separator">:</span>
@@ -154,6 +167,7 @@ button:focus, button:active {
         <button class="main-button" data-action="start" id="js-btn">
           Start
         </button>
+        </div>
       </div>
     </main>
     <div class="hidden">
