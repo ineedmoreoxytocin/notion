@@ -12,9 +12,9 @@ html {
 }
 
 :root {
-  --pomodoro: #77c4c9;
-  --shortBreak: #f0adc2;
-  --longBreak: #7ac773;
+  --pomodoro: #9cd1d9;
+  --shortBreak: #e8b5c5;
+  --longBreak: #98cc93;
   --bgc: var(--pomodoro);
 }
 
@@ -315,9 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('Notification' in window && Notification.permission !== 'denied') {
     Notification.requestPermission().then(function(permission) {
       if (permission === 'granted') {
-        new Notification(
-          'Awesome! You will receive notifications at the start of a pomodoro or a break'
-        );
+       
       }
     });
   }
