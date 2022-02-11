@@ -8,6 +8,7 @@
 * Pomodoro timer (simple ver): https://ineedmoreoxytocin.github.io/notion/pomodoro_simple.html
 * Kanban (version 1): https://ineedmoreoxytocin.github.io/notion/friend/figure.html
 * Kanban (version 2): https://ineedmoreoxytocin.github.io/notion/friend/purewhite/figure.html
+* Kanban (version 3): https://ineedmoreoxytocin.github.io/notion/friend/cat_friend/cat.html
 * Music side bar: https://ineedmoreoxytocin.github.io/notion/bgm.html
 * Music side bar with prettier UI: https://ineedmoreoxytocin.github.io/notion/bgm2.html
 * Music side bar with pretty UI (darker blue): https://ineedmoreoxytocin.github.io/notion/bgm3.html
