@@ -12,4 +12,5 @@
 * Music side bar: https://ineedmoreoxytocin.github.io/notion/bgm/bgm4.html
 * Weather: https://ineedmoreoxytocin.github.io/notion/weather.html
 * Timer: https://ineedmoreoxytocin.github.io/notion/timer.html
+* Flip clock: https://ineedmoreoxytocin.github.io/notion/flip_clock.html
 * (Wow I finally learned how to delete things, how amazing = =)
