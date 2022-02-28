@@ -12,4 +12,4 @@
 * Music side bar: https://ineedmoreoxytocin.github.io/notion/bgm/bgm4.html
 * Weather: https://ineedmoreoxytocin.github.io/notion/weather.html
 * Timer: https://ineedmoreoxytocin.github.io/notion/timer.html
-(Wow I finally learned how to delete things, how amazing = =)
+* (Wow I finally learned how to delete things, how amazing = =)
