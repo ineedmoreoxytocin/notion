@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+body {
+  background-color: #9cd1d9;
+  font-family: 'Meow Script', cursive;
+  margin:0
+}
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9cd1d9;
+  border-radius: 10px;
+}
+.accordion {
+  background-color: #9cd1d9;
+  color: White;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #6cb3bd; 
+}
+
+.panel {
+  display: none;
+  background-color: black;
+  overflow: hidden;
+}
+* {box-sizing: border-box}
+.Slide1 {display: none}
+.Slide2 {display: none}
+.Slide3 {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  background-color: black;
+  font-size: 15px;
+  padding: 4px 12px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: -5 -5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #bbb;
+}
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+
+
+<button class="accordion">M U S I C</button>
+<div class="panel">
+<div class="slideshow-container">
+
+<div class="Slide1 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/yXeQj0Zg-rA?list=PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">piano</div>
+</div>
+<div class="Slide1 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/Ggdm7oGNA5M?list=PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">lofi</div>
+</div>
+
+<div class="Slide1 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0ZTYqHkTxNKEmLKM1yqVpd" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">jazz</div>
+</div>
+
+<a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide1(1)">&#10095;</a>
+
+</div>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide1(1)"></span> 
+  <span class="dot" onclick="currentSlide1(2)"></span> 
+  <span class="dot" onclick="currentSlide1(3)"></span> 
+</div>
+</div>
+
+<button class="accordion">A U R A</button>
+<div class="panel">
+<div class="slideshow-container">
+
+<div class="Slide3 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">feeling like a princess</div>
+</div>
+<div class="Slide3 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?controls=0&amp;list=PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">feeling like a witch</div>
+</div>
+
+<div class="Slide3 fade">
+  <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?controls=0&amp;list=PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">feeling like a world traveler</div>
+</div>
+
+<a class="prev" onclick="plusSlide3(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide3(1)">&#10095;</a>
+
+</div>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide3(1)"></span> 
+  <span class="dot" onclick="currentSlide3(2)"></span> 
+  <span class="dot" onclick="currentSlide3(3)"></span> 
+</div>
+</div>
+
+<button class="accordion">S P A C E</button>
+<div class="panel">
+<div class="slideshow-container">
+
+<div class="Slide2 fade">
+      <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">mystic</div>
+</div>
+<div class="Slide2 fade">
+      <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">library</div>
+</div>
+<div class="Slide2 fade">
+      <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">cafe</div>
+</div>
+<div class="Slide2 fade">
+      <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">cottage</div>
+</div>
+<div class="Slide2 fade">
+    <iframe width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">study with me</div>
+</div>
+
+<a class="prev" onclick="plusSlide2(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide2(1)">&#10095;</a>
+</div>
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide2(1)"></span> 
+  <span class="dot" onclick="currentSlide2(2)"></span> 
+  <span class="dot" onclick="currentSlide2(3)"></span> 
+  <span class="dot" onclick="currentSlide2(4)"></span> 
+  <span class="dot" onclick="currentSlide2(5)"></span>
+</div>
+</div>
+<button class="accordion">N A T U R E</button>
+<div class="panel">
+<iframe src="https://www.moszen.com" width="100%" height="200" style="border:none;" scrolling="yes"></iframe>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+var slideIndex = 1;
+showSlide1(slideIndex);
+
+function plusSlide1(n) {
+  showSlide1(slideIndex += n);
+}
+
+function currentSlide1(n) {
+  showSlide1(slideIndex = n);
+}
+
+function showSlide1(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide1");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+<script>
+var slideIndex = 1;
+showSlide2(slideIndex);
+
+function plusSlide2(n) {
+  showSlide2(slideIndex += n);
+}
+
+function currentSlide2(n) {
+  showSlide2(slideIndex = n);
+}
+
+function showSlide2(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide2");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+<script>
+var slideIndex = 1;
+showSlide3(slideIndex);
+
+function plusSlide3(n) {
+  showSlide3(slideIndex += n);
+}
+
+function currentSlide3(n) {
+  showSlide3(slideIndex = n);
+}
+
+function showSlide3(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide3");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+</html>
