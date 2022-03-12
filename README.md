@@ -13,4 +13,5 @@
 * Weather: https://ineedmoreoxytocin.github.io/notion/weather.html
 * Timer: https://ineedmoreoxytocin.github.io/notion/timer.html
 * Flip clock: https://ineedmoreoxytocin.github.io/notion/flip_clock.html
+* Small flip clock for embed (without seconds): https://ineedmoreoxytocin.github.io/notion/flip_clock_small.html
 * (Wow I finally learned how to delete things, how amazing = =)
