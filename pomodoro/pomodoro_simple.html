@@ -1,8 +1,10 @@
 <html lang="en">
   <head>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 html {
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 *, *::before, *::after {
@@ -17,11 +19,9 @@ html {
   --longBreak: #98cc93;
   --bgc: var(--pomodoro);
 }
-
 body {
   background-color: var(--bgc);
   transition: background-color 1s ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   user-select: none;
 }
 
@@ -34,11 +34,18 @@ progress {
 }
 
 progress::-webkit-progress-bar {
- background-color: rgba(0, 0, 0, 0.1);;
+ background-color: rgba(0, 0, 0, 0.1);
 }
 
 progress::-webkit-progress-value {
   background-color: #fff;
+}
+
+.progress-bar{
+  color:#fff;
+  font-family: arial, sans-serif;
+  text-align: right;
+  font-size: 6px;
 }
 
 .timer {
@@ -72,11 +79,12 @@ progress::-webkit-progress-value {
   border-radius: 4px;
   padding: 5px 5px;
   background: none;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  border: 2px solid #ffffff00;
 }
-
 .mode-button.active {
-  background-color: #fff;
-  color: var(--bgc);
+  border: 2px solid #fff;
 }
 
 .main-button {
@@ -132,7 +140,7 @@ padding-left: 5px;
   <body>
     <main class="app">
       <progress id="js-progress" value="0"></progress>
-      <div class="progress-bar"></div>
+      <div class="progress-bar" id="progress" ></div>
       <div class="timer">
       	<div class="left">
         <div class="button-group mode-buttons" id="js-mode-buttons">
@@ -155,8 +163,7 @@ padding-left: 5px;
             class="button mode-button"
             id="js-long-break"
           >
-            LONG
-			BREAK
+            CHILL
           </button>
         </div>
         </div>
@@ -177,12 +184,12 @@ padding-left: 5px;
       <audio src="break.mp3" data-sound="shortBreak"></audio>
       <audio src="break.mp3" data-sound="longBreak"></audio>
     </div>
-    <script>
-    const timer = {
+<script>
+  const timer = {
   pomodoro: 35,
-  shortBreak: 5,
+  shortBreak: 1,
   longBreak: 15,
-  longBreakInterval: 4,
+  longBreakInterval: 3,
   sessions: 0,
 };
 
@@ -214,9 +221,15 @@ function updateClock() {
   min.textContent = minutes;
   sec.textContent = seconds;
 
-  document.title = `${time} - Freshman Pomodoro Clock Demo`;
+  document.title = `${time} - Pomodoro Clock`;
   const progress = document.getElementById('js-progress');
   progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
+  if (timer.mode === 'pomodoro') {
+ 	 let num = progress.value/60/35;
+ 	 document.getElementById("progress").innerHTML = num.toPrecision(1);
+	} else {
+ 	 document.getElementById("progress").innerHTML = "";
+	}
 }
 
 function startTimer() {
