@@ -10,6 +10,7 @@
 * Kanban (v2): https://ineedmoreoxytocin.github.io/notion/friend/purewhite/figure.html
 * Kanban (v3): https://ineedmoreoxytocin.github.io/notion/friend/cat_friend/cat.html
 * Music side bar: https://ineedmoreoxytocin.github.io/notion/bgm/bgm4.html
+* Music side bar (dark ver): https://ineedmoreoxytocin.github.io/notion/bgm/bgm5.html
 * Weather: https://ineedmoreoxytocin.github.io/notion/weather.html
 * Timer: https://ineedmoreoxytocin.github.io/notion/timer.html
 * Flip clock: https://ineedmoreoxytocin.github.io/notion/flip_clock.html
