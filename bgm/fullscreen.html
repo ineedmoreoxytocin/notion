@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,22 +10,11 @@ body {
   font-family: 'Meow Script', cursive;
   margin:0
 }
-/* width */
+/* hide scrollbar */
 ::-webkit-scrollbar {
   width: 0px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #9cd1d9;
-  border-radius: 10px;
-}
 .accordion {
   background-color: #191919;
   color: #9cd1d9;
@@ -49,6 +39,7 @@ body {
   overflow: hidden;
 }
 * {box-sizing: border-box}
+.Slide0 {display: none}
 .Slide1 {display: none}
 .Slide2 {display: none}
 .Slide3 {display: none}
@@ -129,6 +120,32 @@ body {
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/146/146413.png">
 </head>
 <body>
+
+<button class="accordion"> </button>
+<div class="panel">
+<div class="slideshow-container">
+
+<div class="Slide0 fade">
+<iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="text">portal</div>
+</div>
+
+<div class="Slide0 fade">
+<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=903142546&bvid=BV1kP4y1X7vf&cid=907771091&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div class="text">church</div>
+</div>
+
+<div class="Slide0 fade">
+<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=686832944&bvid=BV19U4y1k7ZX&cid=800515992&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div class="text">study</div>
+</div>
+
+
+<a class="prev" onclick="plusSlide0(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide0(1)">&#10095;</a>
+
+</div>
+</div>
 
 <button class="accordion">A U R A</button>
 <div class="panel">
@@ -287,6 +304,34 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
+}
+</script>
+<script>
+var slideIndex = 1;
+showSlide0(slideIndex);
+
+function plusSlide0(n) {
+  showSlide0(slideIndex += n);
+}
+
+function currentSlide0(n) {
+  showSlide0(slideIndex = n);
+}
+
+function showSlide0(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide0");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
 }
 </script>
 <script>
