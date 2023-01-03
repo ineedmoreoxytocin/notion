@@ -46,6 +46,7 @@ body {
 .Slide3 {display: none}
 .Slide4 {display: none}
 .Slide5 {display: none}
+.Slide6 {display: none}
 
 /* Slideshow container */
 .slideshow-container {
@@ -116,6 +117,24 @@ body {
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  font-size: 10px;
+  margin: 0 2px;
+  background-color: #ffffff00;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #9cd1d9;
+}
+
 </style>
   <title>Record Player</title>
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/146/146413.png">
@@ -127,23 +146,8 @@ body {
 <div class="slideshow-container">
 
 <div class="Slide0 fade">
-<iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<div class="text">portal</div>
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3FLTi8ppf8H0NN_XtUta0K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-
-<div class="Slide0 fade">
-<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=903142546&bvid=BV1kP4y1X7vf&cid=907771091&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-<div class="text">church</div>
-</div>
-
-<div class="Slide0 fade">
-<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=686832944&bvid=BV19U4y1k7ZX&cid=800515992&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-<div class="text">study</div>
-</div>
-
-
-<a class="prev" onclick="plusSlide0(-1)">&#10094;</a>
-<a class="next" onclick="plusSlide0(1)">&#10095;</a>
 
 </div>
 </div>
@@ -190,6 +194,16 @@ body {
 <a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide1(1)">&#10095;</a>
 
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide1(1)">🌧️</span> 
+  <span class="dot" onclick="currentSlide1(2)">📖</span> 
+  <span class="dot" onclick="currentSlide1(3)">🌊</span> 
+  <span class="dot" onclick="currentSlide1(4)">🚂</span> 
+  <span class="dot" onclick="currentSlide1(5)">☕</span>
+  <span class="dot" onclick="currentSlide1(6)">🌲</span>
+  <span class="dot" onclick="currentSlide1(7)">🪄</span>
+</div>
+
 </div>
 </div>
 
@@ -220,6 +234,13 @@ body {
 <a class="prev" onclick="plusSlide2(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide2(1)">&#10095;</a>
 
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide2(1)">🎹</span> 
+  <span class="dot" onclick="currentSlide2(2)">📻</span> 
+  <span class="dot" onclick="currentSlide2(3)">🎻</span> 
+  <span class="dot" onclick="currentSlide2(4)">🎷</span> 
+</div>
+
 </div>
 </div>
 
@@ -249,10 +270,17 @@ body {
 <a class="prev" onclick="plusSlide3(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide3(1)">&#10095;</a>
 
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide3(1)">👑</span> 
+  <span class="dot" onclick="currentSlide3(2)">🍷</span> 
+  <span class="dot" onclick="currentSlide3(3)">🌷</span> 
+  <span class="dot" onclick="currentSlide3(4)">🔮</span> 
+</div>
+
 </div>
 </div>
 
-<button class="accordion">M I S C</button>
+<button class="accordion">T I M E</button>
 <div class="panel">
 <div class="slideshow-container">
 
@@ -267,6 +295,16 @@ body {
 </div>
 
 <div class="Slide4 fade">
+<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=903142546&bvid=BV1kP4y1X7vf&cid=907771091&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div class="text">church</div>
+</div>
+
+<div class="Slide4 fade">
+<iframe width="100%" height="900px" src="//player.bilibili.com/player.html?aid=686832944&bvid=BV19U4y1k7ZX&cid=800515992&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div class="text">study</div>
+</div>
+
+<div class="Slide4 fade">
     <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="text">study with me</div>
 </div>
@@ -276,7 +314,7 @@ body {
 </div>
 </div>
 
-<button class="accordion">  </button>
+<button class="accordion"> </button>
 <div class="panel">
 <div class="slideshow-container">
 
@@ -286,15 +324,30 @@ body {
 </div>
 
 <div class="Slide5 fade">
+<iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3habZVhFmgv-jxCUen9v1Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div class="text">inspirational fantasy</div>
+</div>
+
+<div class="Slide5 fade">
+<iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="text">atmospheric portal</div>
+</div>
+
+<div class="Slide5 fade">
 <iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3l6F8zfiCS_tHkbkJD33YS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="text">merrily alone</div>
 </div>
 
+<div class="Slide5 fade">
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2SUtOPzWLB-SvEx9WRcHbG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div class="text">❤️</div>
+</div>
+
 <a class="prev" onclick="plusSlide5(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide5(1)">&#10095;</a>
+</div>
+</div>
 
-</div>
-</div>
 
 <script>
 var acc = document.getElementsByClassName("accordion");
@@ -480,5 +533,34 @@ function showSlide5(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
+<script>
+var slideIndex = 1;
+showSlide6(slideIndex);
+
+function plusSlide6(n) {
+  showSlide6(slideIndex += n);
+}
+
+function currentSlide6(n) {
+  showSlide6(slideIndex = n);
+}
+
+function showSlide6(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide6");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
 </body>
 </html>
