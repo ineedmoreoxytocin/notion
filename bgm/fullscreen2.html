@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+body {
+  background-color: #191919;
+  font-family: 'Meow Script', cursive;
+  margin:0;
+  color: white;
+}
+/* hide scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.accordion {
+  background-color: #111;
+  color: #9cd1d9;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-family: 'Meow Script', cursive;
+}
+
+.active, .accordion:hover {
+  background-color: #9cd1d9; 
+  color: white;
+}
+
+.panel {
+  display: none;
+  background-color: #111;
+  overflow: hidden;
+}
+* {box-sizing: border-box}
+.Slide0 {display: none}
+.Slide1 {display: none}
+.Slide2 {display: none}
+.Slide3 {display: none}
+.Slide4 {display: none}
+.Slide5 {display: none}
+.Slide6 {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  background-color: #191919;
+  font-size: 15px;
+  padding: 4px 12px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.divider {
+  color: white;
+  padding: 18px;
+  font-size: 15px;
+  font-family: 'arial';
+  text-align: center;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  font-size: 10px;
+  margin: 0 2px;
+  background-color: #ffffff00;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #9cd1d9;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: white;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+  
+  <title>Record Player</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/146/146413.png">
+  
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<div class="divider">T U N E</div>
+
+<button class="accordion">dark academia</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">light academia</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">2 a.m. study session</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">jazzy winter</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0ZTYqHkTxNKEmLKM1yqVpd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="divider">F E E L</div>
+
+<button class="accordion">feeling like a princess</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">feeling like a witch</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">feeling like a fairy</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3nn9I-fNqo7HukLJsflkjG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">feeling like a world traveler</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="divider">S O N G</div>
+
+<button class="accordion">hopelessly romantic</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0-4a8T_xM1kcXGFpNgDb3k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">fantastical inspirations</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3habZVhFmgv-jxCUen9v1Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">merrily alone</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3l6F8zfiCS_tHkbkJD33YS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">obey me</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2SUtOPzWLB-SvEx9WRcHbG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<button class="accordion">misc</button>
+<div class="panel">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3FLTi8ppf8H0NN_XtUta0K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer; position: absolute; z-index: 10;" onclick="openNav()">&#9776; </span>
+</div>
+
+
+<div class="slideshow-container">
+
+<div class="Slide1 fade">
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+<div class="text">stormy night</div>
+</div>
+
+<div class="Slide1 fade">
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="text">studying at the library alone</div>
+</div>
+
+<div class="Slide1 fade">
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="text">underwater mystery</div>
+</div>
+
+<div class="Slide1 fade">
+<iframe width="100%" height="900" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">travelling with your companions</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">sipping coffee</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">wandering in a forest at dawn</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">stepping into the unknown</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">study with me</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">25/5</div>
+</div>
+
+<div class="Slide1 fade">
+    <iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="text">50/10</div>
+</div>
+
+<div class="Slide1 fade">
+<iframe width="100%" height="900px" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx00duRmR9YJdO8dt6usPpS-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="text">study with obey me</div>
+</div>
+
+<a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide1(1)">&#10095;</a>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide1(1)">🌧️</span> 
+  <span class="dot" onclick="currentSlide1(2)">📖</span> 
+  <span class="dot" onclick="currentSlide1(3)">🌊</span> 
+  <span class="dot" onclick="currentSlide1(4)">🚋</span> 
+  <span class="dot" onclick="currentSlide1(5)">☕</span>
+  <span class="dot" onclick="currentSlide1(6)">🌲</span>
+  <span class="dot" onclick="currentSlide1(7)">🌫️</span>
+  <span class="dot" onclick="currentSlide1(8)">✍️</span>
+  <span class="dot" onclick="currentSlide1(9)">⌛</span>
+  <span class="dot" onclick="currentSlide1(10)">⏳</span>
+  <span class="dot" onclick="currentSlide1(11)">💙</span>
+</div>
+
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+var slideIndex = 1;
+showSlide1(slideIndex);
+
+function plusSlide1(n) {
+  showSlide1(slideIndex += n);
+}
+
+function currentSlide1(n) {
+  showSlide1(slideIndex = n);
+}
+
+function showSlide1(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide1");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+   
+</body>
+</html> 
