@@ -41,13 +41,8 @@ body {
   overflow: hidden;
 }
 * {box-sizing: border-box}
-.Slide0 {display: none}
+.Slides {display: none}
 .Slide1 {display: none}
-.Slide2 {display: none}
-.Slide3 {display: none}
-.Slide4 {display: none}
-.Slide5 {display: none}
-.Slide6 {display: none}
 
 /* Slideshow container */
 .slideshow-container {
@@ -122,30 +117,8 @@ body {
   to {opacity: 1}
 }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: auto;
-  width: auto;
-  font-size: 14px;
-  padding: 3px;
-  background-color: #ffffff00;
-  display: block;
-  transition: background-color 0.6s ease;
-  text-align: right;
-}
-
-.active, .dot:hover {
-  font-weight: bold;
-}
-
-
-.sidenav {
+/* Hover menus */
+.leftnav {
   height: 100%;
   max-width: 450px;
   position: fixed;
@@ -159,13 +132,13 @@ body {
   opacity: 0;
 }
 
-.sidenav:hover {
+.leftnav:hover {
   left: 0px;
   background-color: #111;
   opacity: 1;
 }
 
-.sidenav a {
+.leftnav a {
   text-decoration: none;
   font-size: 25px;
   color: white;
@@ -173,22 +146,11 @@ body {
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.leftnav a:hover {
   color: white;
 }
 
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.sidenav2 {
+.rightnav {
   position: absolute;
   right: -100px;
   transition: 0.3s;
@@ -206,10 +168,109 @@ body {
   overflow-x: hidden;
   opacity: 0;
 }
-.sidenav2:hover {
+.rightnav:hover {
   right: 0px;
   background-color: #111;
   opacity: 1;
+}
+
+.dot {
+  cursor: pointer;
+  height: auto;
+  width: auto;
+  font-size: 14px;
+  padding: 3px;
+  background-color: #ffffff00;
+  display: block;
+  transition: background-color 0.6s ease;
+  text-align: right;
+}
+
+.active, .dot:hover {
+  font-weight: bold;
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: #00000000;
+  overflow: hidden;
+  margin-left: 45%;
+  z-index: 2;
+  position: absolute;
+}
+
+.icon {
+  float: center;
+  width: auto;
+  height: 13px;
+  width: 20px;
+  margin: 0 4px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline;
+  text-align: center;
+  padding: 2px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 16px;
+  z-index: 2;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  margin-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #00000000;
+  z-index: 3;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #00000000;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: #9cd1d9;
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  z-index: 3;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* On smaller screens, decrease video size */
+.responsive-iframe {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1200px;
+}
+
+@media only screen and (max-width: 800px) {
+  .prev, .next,.text {font-size: 11px}
+  .responsive-iframe {height: 500px;}
+  .rightnav {padding-top: 20px;}
 }
 </style>
   
@@ -219,20 +280,55 @@ body {
 </head>
 <body>
 
-<div class="sidenav">
-
-<div class="divider">T U N E</div>
-
-<button class="accordion">melancholic</button>
-<div class="panel">
-<iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="icon-bar">
+  <div class="icon" onclick="openModal();currentSlide(1)">🪟</div>
+  <div class="icon" onclick="openModal();currentSlide(2)">⏰</div>
+  <div class="icon" onclick="openModal();currentSlide(3)">💙</div>
+  <div class="icon" onclick="openModal();currentSlide(4)">⏳</div>
+  <div class="icon" onclick="openModal();currentSlide(5)">🕰️</div>
 </div>
+
+<div id="lightbox" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+<div class="Slides">
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" title="study with me" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="Slides">
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO" title="study with me & pomodoro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="Slides">
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx00duRmR9YJdO8dt6usPpS-" title="studying with demons" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="Slides">
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="pomodoro 50/10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="Slides">
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA" title="pomodoro 25/5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div> 
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</div>
+
+<div class="leftnav">
+<div class="divider">T U N E</div>
   
 <button class="accordion">classical</button>
 <div class="panel">
 <iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-  
+
+<button class="accordion">melancholic</button>
+<div class="panel">
+<iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 <button class="accordion">dark & dramatic</button>
 <div class="panel">
 <iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -301,100 +397,66 @@ body {
 <div class="panel">
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2SUtOPzWLB-SvEx9WRcHbG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-
 </div>
 
 
 <div class="slideshow-container">
   
 <div class="Slide1 fade">
-  <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-<div class="text">fireplace crackling with rain</div>
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT" title="antique study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+<div class="text"></div>
 </div>
 
 <div class="Slide1 fade">
-  <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-<div class="text">stormy night</div>
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" title="ancient library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="Slide1 fade">
-  <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<div class="text">studying at an ancient library</div>
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2" title="vintage mansion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 </div>
 
 <div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">sipping coffee in a cozy cafe</div>
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" title="cozy cafe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
   
 <div class="Slide1 fade">
-<iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="text">underwater mystery</div>
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X" title="serene ocean" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">wandering in a forest at dawn</div>
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" title="tranquil forest" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="Slide1 fade">
-  <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">travelling with your companions</div>
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE" title="luxurious travel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
   
 <div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">stepping into the unknown</div>
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" title="mystic lair" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">study with me</div>
-</div>
-
-<div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">pomodoro 25/5</div>
-</div>
-
-<div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  <div class="text">pomodoro 50/10</div>
-</div>
-
-<div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx00duRmR9YJdO8dt6usPpS-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="text">studying with demons</div>
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5" title="enchanted portal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
   
 <div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div class="text">enchanted portal</div>
-</div>
-  
-<div class="Slide1 fade">
-    <iframe width="100%" height="1000" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="text">when someone is playing piano in another room</div>
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="studying ambience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide1(1)">&#10095;</a>
 
-<div  class="sidenav2">
-  <span class="dot" onclick="currentSlide1(1)">rain &  fireplace 🌧️</span> 
-  <span class="dot" onclick="currentSlide1(2)">thunderstorm ⛈️</span>
-  <span class="dot" onclick="currentSlide1(3)">library 📖</span> 
-  <span class="dot" onclick="currentSlide1(4)">cafe ☕</span>
-  <span class="dot" onclick="currentSlide1(5)">ocean 🌊</span>
-  <span class="dot" onclick="currentSlide1(6)">forest 🌳</span>
-  <span class="dot" onclick="currentSlide1(7)">train & carriage 🦄</span>
-  <span class="dot" onclick="currentSlide1(8)">miscellaneous  🔮</span>
-  <span class="dot" onclick="currentSlide1(9)">study with me ✍🏻</span>
-  <span class="dot" onclick="currentSlide1(10)">pomo 25/5 ⏳</span>
-  <span class="dot" onclick="currentSlide1(11)">pomo 50/10 ⏳</span>
-  <span class="dot" onclick="currentSlide1(12)">obey me 💙</span>
-  <span class="dot" onclick="currentSlide1(13)">fantasy 🪞</span>
-  <span class="dot" onclick="currentSlide1(14)">with faint music 🎵</span>
+<div  class="rightnav">
+  <span class="dot" onclick="currentSlide1(1)">antique study 🕯️</span> 
+  <span class="dot" onclick="currentSlide1(2)">ancient library 📖</span>
+  <span class="dot" onclick="currentSlide1(3)">vintage mansion 🌧️</span>
+  <span class="dot" onclick="currentSlide1(4)">cozy cafe ☕</span>
+  <span class="dot" onclick="currentSlide1(5)">serene ocean 🌊</span>
+  <span class="dot" onclick="currentSlide1(6)">tranquil forest 🌳</span>
+  <span class="dot" onclick="currentSlide1(7)">luxurious travel 🚂</span>
+  <span class="dot" onclick="currentSlide1(8)">mystic lair  🔮</span>
+  <span class="dot" onclick="currentSlide1(9)">enchanted portal 🪞</span>
+  <span class="dot" onclick="currentSlide1(10)">with faint music 🎵</span>
 </div>
 
 </div>
@@ -442,6 +504,42 @@ function showSlide1(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
-   
+<script>
+function openModal() {
+  document.getElementById("lightbox").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 </body>
 </html> 
