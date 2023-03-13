@@ -160,7 +160,7 @@ body {
   position: absolute;
   right: -100px;
   transition: 0.3s;
-  padding-left: 10px;
+  padding-left: 5px;
   padding-right: 5px;
   padding-top: 30px;
   width: 130px;
@@ -189,7 +189,7 @@ body {
   background-color: #ffffff00;
   display: block;
   transition: background-color 0.6s ease;
-  text-align: right;
+  text-align: center;
 }
 
 .active, .dot:hover {
@@ -200,9 +200,10 @@ body {
   width: 100%;
   background-color: #00000000;
   overflow: hidden;
-  margin-top: -20px;
+  margin-top: 0px;
   z-index: 2;
   position: absolute;
+  margin-left: 15px;
 }
 
 .icon {
@@ -244,8 +245,8 @@ body {
 .close {
   color: #9cd1d9;
   position: absolute;
-  top: 0px;
-  right: 25px;
+  top: 20px;
+  right: 33px;
   font-size: 45px;
   font-weight: bold;
   z-index: 5;
@@ -439,6 +440,17 @@ body {
 <a class="next" onclick="plusSlide1(1)">&#10095;</a>
 
 <div  class="rightnav">
+  <span class="dot" onclick="currentSlide1(1)">🕯️ antique study 🕯️</span> 
+  <span class="dot" onclick="currentSlide1(2)">📖 ancient library 📖</span>
+  <span class="dot" onclick="currentSlide1(3)">🌧️ vintage mansion 🌧️</span>
+  <span class="dot" onclick="currentSlide1(4)">☕ cozy cafe ☕</span>
+  <span class="dot" onclick="currentSlide1(5)">🌊 serene ocean 🌊</span>
+  <span class="dot" onclick="currentSlide1(6)">🌳 tranquil forest 🌳</span>
+  <span class="dot" onclick="currentSlide1(7)">🚂 luxurious travel 🚂</span>
+  <span class="dot" onclick="currentSlide1(8)">🔮 mystic lair  🔮</span>
+  <span class="dot" onclick="currentSlide1(9)">🪞 enchanted gate 🪞</span>
+  <span class="dot" onclick="currentSlide1(10)">🎵 faint music 🎵</span>
+<br>
 <div class="icon-bar">
   <div class="icon" onclick="openModal();currentSlide(1)">🪟</div>
   <div class="icon" onclick="openModal();currentSlide(2)">⏰</div>
@@ -446,19 +458,8 @@ body {
   <div class="icon" onclick="openModal();currentSlide(4)">💙</div>
 </div>
 <br>
-  <span class="dot" onclick="currentSlide1(1)">antique study 🕯️</span> 
-  <span class="dot" onclick="currentSlide1(2)">ancient library 📖</span>
-  <span class="dot" onclick="currentSlide1(3)">vintage mansion 🌧️</span>
-  <span class="dot" onclick="currentSlide1(4)">cozy cafe ☕</span>
-  <span class="dot" onclick="currentSlide1(5)">serene ocean 🌊</span>
-  <span class="dot" onclick="currentSlide1(6)">tranquil forest 🌳</span>
-  <span class="dot" onclick="currentSlide1(7)">luxurious travel 🚂</span>
-  <span class="dot" onclick="currentSlide1(8)">mystic lair  🔮</span>
-  <span class="dot" onclick="currentSlide1(9)">enchanted portal 🪞</span>
-  <span class="dot" onclick="currentSlide1(10)">with faint music 🎵</span>
-<br>
-  <span class="dot" onclick="currentSlide1(11)">pomo 50/10 ⏳</span>
-  <span class="dot" onclick="currentSlide1(12)">pomo 25/5 ⏳</span>
+  <span class="dot" onclick="currentSlide1(11)">⏳ pomo 50/10 ⏳</span>
+  <span class="dot" onclick="currentSlide1(12)">⏳ pomo 25/5 ⏳</span>
 </div>
 
 </div>
