@@ -160,8 +160,6 @@ body {
   position: absolute;
   right: -100px;
   transition: 0.3s;
-  padding-left: 5px;
-  padding-right: 5px;
   padding-top: 30px;
   width: 130px;
   color: white;
@@ -173,6 +171,7 @@ body {
   background-color: #11111100;
   overflow-x: hidden;
   opacity: 0;
+  text-align: justify;
 }
 .rightnav:hover {
   right: 0px;
@@ -203,7 +202,7 @@ body {
   margin-top: 0px;
   z-index: 2;
   position: absolute;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .icon {
@@ -368,23 +367,22 @@ body {
 <iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3habZVhFmgv-jxCUen9v1Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-<button class="accordion">cute & happy rhythms</button>
+<button class="accordion">cute & happy</button>
 <div class="panel">
 <iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3l6F8zfiCS_tHkbkJD33YS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<button class="accordion">songs I liked but fits nowhere</button>
-<div class="panel">
-<iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3FLTi8ppf8H0NN_XtUta0K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <button class="accordion">obey me</button>
 <div class="panel">
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2SUtOPzWLB-SvEx9WRcHbG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
+
+<button class="accordion">miscellaneous</button>
+<div class="panel">
+<iframe width="100%" height="255" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3FLTi8ppf8H0NN_XtUta0K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-
+</div>
 <div class="slideshow-container">
   
 <div class="Slide1 fade">
@@ -398,6 +396,10 @@ body {
 
 <div class="Slide1 fade">
   <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2" title="vintage mansion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1azoNTCxPrxa3KvyC6n3k5" title="witch's apothecary" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="Slide1 fade">
@@ -429,12 +431,12 @@ body {
 </div>
 
 <div class="Slide1 fade">
-<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="pomodoro 50/10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<div class="Slide1 fade">
 <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA" title="pomodoro 25/5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </div> 
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="pomodoro 50/10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide1(1)">&#10095;</a>
@@ -442,14 +444,15 @@ body {
 <div  class="rightnav">
   <span class="dot" onclick="currentSlide1(1)">🕯️ antique study 🕯️</span> 
   <span class="dot" onclick="currentSlide1(2)">📖 ancient library 📖</span>
-  <span class="dot" onclick="currentSlide1(3)">🌧️ vintage mansion 🌧️</span>
-  <span class="dot" onclick="currentSlide1(4)">☕ cozy cafe ☕</span>
-  <span class="dot" onclick="currentSlide1(5)">🌊 serene ocean 🌊</span>
-  <span class="dot" onclick="currentSlide1(6)">🌳 tranquil forest 🌳</span>
-  <span class="dot" onclick="currentSlide1(7)">🚂 luxurious travel 🚂</span>
-  <span class="dot" onclick="currentSlide1(8)">🔮 mystic lair  🔮</span>
-  <span class="dot" onclick="currentSlide1(9)">🪞 enchanted gate 🪞</span>
-  <span class="dot" onclick="currentSlide1(10)">🎵 faint music 🎵</span>
+  <span class="dot" onclick="currentSlide1(3)">🔮 witch's apothecary 🔮</span>
+  <span class="dot" onclick="currentSlide1(4)">🌧️ vintage mansion 🌧️</span>
+  <span class="dot" onclick="currentSlide1(5)">☕ cozy cafe ☕</span>
+  <span class="dot" onclick="currentSlide1(6)">🌊 serene ocean 🌊</span>
+  <span class="dot" onclick="currentSlide1(7)">🌳 tranquil forest 🌳</span>
+  <span class="dot" onclick="currentSlide1(8)">🎠 luxurious ride 🎠</span>
+  <span class="dot" onclick="currentSlide1(9)">👻 mystic lair  👻</span>
+  <span class="dot" onclick="currentSlide1(10)">🪞 enchanted portal 🪞</span>
+  <span class="dot" onclick="currentSlide1(11)">🎵 faint music 🎵</span>
 <br>
 <div class="icon-bar">
   <div class="icon" onclick="openModal();currentSlide(1)">🪟</div>
@@ -458,8 +461,8 @@ body {
   <div class="icon" onclick="openModal();currentSlide(4)">💙</div>
 </div>
 <br>
-  <span class="dot" onclick="currentSlide1(11)">⏳ pomo 50/10 ⏳</span>
-  <span class="dot" onclick="currentSlide1(12)">⏳ pomo 25/5 ⏳</span>
+  <span class="dot" onclick="currentSlide1(12)">⏳ pomo 25/05 ⏳</span>
+  <span class="dot" onclick="currentSlide1(13)">⏳ pomo 50/10 ⏳</span>
 </div>
 
 </div>
