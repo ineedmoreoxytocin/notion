@@ -64,7 +64,6 @@ body {
 
 /* Next & previous buttons */
 .prev, .next {
-  z-index: 3;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -131,7 +130,7 @@ body {
 /* Hover menus */
 .leftnav {
   height: 100%;
-  max-width: 450px;
+  max-width: 420px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -161,68 +160,32 @@ body {
   color: white;
 }
 
-.rightnav {
-  position: absolute;
-  right: -100px;
-  transition: 0.3s;
-  padding-top: 30px;
-  width: 130px;
-  color: white;
-  border-radius: 0 0 5px 5px;
-  height: 100%;
-  position: fixed;
-  z-index: 2;
+.icon-bar {
+  width: 100%;
+  background-color: #000000;
+  overflow: hidden;
   top: 0;
-  background-color: #11111100;
-  overflow-x: hidden;
-  opacity: 0;
-  text-align: center;
-  overflow-y: scroll;
-}
-.rightnav:hover {
-  right: 0px;
-  background-color: #111;
-  opacity: 1;
+  z-index: 2;
+  position: absolute;
+  margin: auto;
+  margin-left: 10%;
 }
 
 .dot {
-  cursor: pointer;
-  height: auto;
-  width: auto;
-  font-size: 14px;
-  padding: 3px;
-  background-color: #ffffff00;
-  display: block;
-  transition: background-color 0.6s ease;
-  text-align: center;
-}
-
-.active, .dot:hover {
-  font-weight: bold;
-}
-
-.icon-bar {
-  width: 100%;
-  background-color: #00000000;
-  overflow: hidden;
-  margin-top: 0px;
-  z-index: 2;
-  position: absolute;
-  margin-left: 20px;
-}
-
-.icon {
-  float: center;
-  height: 10px;
-  width: 10px;
+  height: 7px;
+  width: 7px;
   background-color: #00000000;
   display: inline;
   text-align: center;
-  padding: 1px 0;
-  transition: all 0.3s ease;
+  padding: 1px 0px 1px 0px;
   color: white;
-  font-size: 15px;
+  font-size: 12px;
   z-index: 3;
+  border-radius: 25px;
+}
+
+.active, .dot:hover {
+  background-color: #9cd1d9;
 }
 
 /* On smaller screens, decrease video size */
@@ -372,29 +335,26 @@ body {
 
 <a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide1(1)">&#10095;</a>
-
-<div  class="rightnav">
-  <span class="dot" onclick="currentSlide1(1)">🕯️ antique study 🕯️</span> 
-  <span class="dot" onclick="currentSlide1(2)">📖 ancient library 📖</span>
-  <span class="dot" onclick="currentSlide1(3)">🌧️ vintage mansion 🌧️</span>
-  <span class="dot" onclick="currentSlide1(4)">🔮 witch's apothecary 🔮</span>
-  <span class="dot" onclick="currentSlide1(5)">☕ cozy cafe ☕</span>
-  <span class="dot" onclick="currentSlide1(6)">🌊 serene ocean 🌊</span>
-  <span class="dot" onclick="currentSlide1(7)">🌳 tranquil forest 🌳</span>
-  <span class="dot" onclick="currentSlide1(8)">🎠 luxurious ride 🎠</span>
-  <span class="dot" onclick="currentSlide1(9)">👻 mystic lair 👻</span>
-  <span class="dot" onclick="currentSlide1(10)">🪞 enchanted portal 🪞</span>
-  <span class="dot" onclick="currentSlide1(11)">🎵 faint music 🎵</span>
-<br>🪟 study with me 🪟
-<span class="dot" onclick="currentSlide1(12)">no timer w music</span>
-<span class="dot" onclick="currentSlide1(13)">timed w music</span>
-<span class="dot" onclick="currentSlide1(14)">timed w ambience</span>
-<span class="dot" onclick="currentSlide1(15)">no timer w ambience</span>
-<br>
-  <span class="dot" onclick="currentSlide1(16)">⏳ pomo 25/05 ⏳</span>
-  <span class="dot" onclick="currentSlide1(17)">⏳ pomo 50/10 ⏳</span>
 </div>
 
+<div  class="icon-bar">
+  <span class="dot" onclick="currentSlide1(1)">🕯️</span> 
+  <span class="dot" onclick="currentSlide1(2)">📖</span>
+  <span class="dot" onclick="currentSlide1(3)">🌧️</span>
+  <span class="dot" onclick="currentSlide1(4)">🔮</span>
+  <span class="dot" onclick="currentSlide1(5)">☕</span>
+  <span class="dot" onclick="currentSlide1(6)">🌊</span>
+  <span class="dot" onclick="currentSlide1(7)">🌳</span>
+  <span class="dot" onclick="currentSlide1(8)">🎠</span>
+  <span class="dot" onclick="currentSlide1(9)">👻</span>
+  <span class="dot" onclick="currentSlide1(10)">🪞</span>
+  <span class="dot" onclick="currentSlide1(11)">🎵</span>|
+  <span class="dot" onclick="currentSlide1(12)">🪟</span>
+  <span class="dot" onclick="currentSlide1(13)">⏰</span>
+  <span class="dot" onclick="currentSlide1(14)">🕰️</span>
+  <span class="dot" onclick="currentSlide1(15)">🎹</span>|
+  <span class="dot" onclick="currentSlide1(16)">⏳</span>
+  <span class="dot" onclick="currentSlide1(17)">⏳</span>
 </div>
 
 <script>
