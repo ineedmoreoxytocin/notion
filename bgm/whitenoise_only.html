@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+body {
+  background-color: #000;
+  font-family: 'Meow Script', cursive;
+  margin:0;
+  color: white;
+  overflow-y: hidden;
+}
+/* hide scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.accordion {
+  background-color: #11111100;
+  color: #9cd1d9;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-family: 'Meow Script', cursive;
+}
+
+.active, .accordion:hover {
+  background-color: #9cd1d9; 
+  color: white;
+}
+
+.panel {
+  display: none;
+  background-color: #111;
+  overflow: hidden;
+}
+* {box-sizing: border-box}
+.Slides {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.Slide1 {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  background-color: #19191900;
+  font-size: 15px;
+  padding: 0px;
+  position: absolute;
+  top: -20px;
+  width: 100%;
+  text-align: center;
+}
+
+.divider {
+  color: white;
+  padding: 18px;
+  font-size: 15px;
+  font-family: 'arial';
+  text-align: center;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  z-index: 2;
+  position: inline;
+  margin: auto;
+  margin-left: 10%;
+  opacity: 75%;
+}
+
+.dot {
+  height: 7px;
+  width: 7px;
+  background-color: #00000000;
+  display: inline;
+  text-align: center;
+  padding: 1px 0px 1px 0px;
+  color: white;
+  font-size: 12px;
+  z-index: 3;
+  border-radius: 25px;
+}
+
+.active, .dot:hover {
+  background-color: #9cd1d9;
+}
+
+/* On smaller screens, decrease video size */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+  
+  <title>Record Player</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/146/146413.png">
+  
+</head>
+<body>
+<div class="slideshow-container">
+  
+<div class="Slide1 fade">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT" title="antique study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
+<div class="text"></div>
+</div>
+
+<div class="Slide1 fade">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No" title="ancient library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2" title="vintage mansion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1azoNTCxPrxa3KvyC6n3k5" title="witch's apothecary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o" title="cozy cafe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw" title="study with me" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO" title="study with me x pomo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3Z23Sxmohsoa3Iqfw1ekej" title="study with me no music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx00duRmR9YJdO8dt6usPpS-" title="studying with demons" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA" title="pomodoro 25/5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div> 
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX" title="pomodoro 50/10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X" title="serene ocean" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy" title="tranquil forest" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE" title="luxurious travel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+  
+<div class="Slide1 fade">
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R" title="mystic lair" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="Slide1 fade">
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5" title="enchanted portal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+  
+<div class="Slide1 fade">
+    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/videoseries?list=PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX" title="studying ambience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<a class="prev" onclick="plusSlide1(-1)">&#10094;</a>
+<a class="next" onclick="plusSlide1(1)">&#10095;</a>
+</div>
+
+<div  class="icon-bar">
+  <span class="dot" onclick="currentSlide1(1)">🕯️</span> 
+  <span class="dot" onclick="currentSlide1(2)">📖</span>
+  <span class="dot" onclick="currentSlide1(3)">🌧️</span>
+  <span class="dot" onclick="currentSlide1(4)">🔮</span>
+  <span class="dot" onclick="currentSlide1(5)">☕</span>|
+  <span class="dot" onclick="currentSlide1(6)">🪟</span>
+  <span class="dot" onclick="currentSlide1(7)">⏰</span>
+  <span class="dot" onclick="currentSlide1(8)">🕰️</span>
+  <span class="dot" onclick="currentSlide1(9)">🎹</span>|
+  <span class="dot" onclick="currentSlide1(10)">⏳</span>
+  <span class="dot" onclick="currentSlide1(11)">⏳</span>|
+  <span class="dot" onclick="currentSlide1(12)">🌊</span>
+  <span class="dot" onclick="currentSlide1(13)">🌳</span>
+  <span class="dot" onclick="currentSlide1(14)">🎠</span>
+  <span class="dot" onclick="currentSlide1(15)">👻</span>
+  <span class="dot" onclick="currentSlide1(16)">🪞</span>
+  <span class="dot" onclick="currentSlide1(17)">🎵</span>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+var slideIndex = 1;
+showSlide1(slideIndex);
+
+function plusSlide1(n) {
+  showSlide1(slideIndex += n);
+}
+
+function currentSlide1(n) {
+  showSlide1(slideIndex = n);
+}
+
+function showSlide1(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide1");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+</html> 
