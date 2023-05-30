@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random YouTube Playlist</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+    	body {
+        	background-color: #191919;
+            text-align: center;
+            overflow-y: hidden;
+        }
+        .playlist-button {
+            display: inline-block;
+            padding: 2px 5px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #191919;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Meow Script', cursive;
+        }
+
+        .playlist-button:hover {
+            color: #9cd1d9;
+        }
+        header {
+        	color: #9cd1d9;
+            font-size: 13px;
+ 			font-family: 'arial';
+        }
+    </style>
+</head>
+<body>
+    <header>T U N E</header>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO')">melancholic</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g')">classical</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR')">dramatic</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI')">romantic</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill</button>
+    <header>F E E L</header>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz')">princess</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v')">witch</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3nn9I-fNqo7HukLJsflkjG')">fairy</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX')">hero</button>
+    <div id="player"></div>
+
+    <script>
+        // Variables to store video data
+        var totalVideos;
+        var randomIndex;
+        var videoIds = [];
+        var player;
+
+        // Function to load playlist based on button press
+        function loadPlaylist(playlistId) {
+            // Fetch playlist data using YouTube Data API
+            var apiKey = "AIzaSyAbGq17U0esZWKB2FU6ZhuIzuDq-hCKdio";
+            var apiUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlistId + "&key=" + apiKey;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Get the total number of videos in the playlist
+                    totalVideos = data.pageInfo.totalResults;
+
+                    // Collect the video IDs from the playlist data
+                    videoIds = data.items.map(item => item.snippet.resourceId.videoId);
+
+                    // Generate a random index
+                    randomIndex = Math.floor(Math.random() * totalVideos);
+
+                    // Create a player instance if not already created
+                    if (!player) {
+                        player = new YT.Player('player', {
+                            height: '200',
+                            width: '100%',
+                            videoId: videoIds[randomIndex],
+                            playerVars: {
+                                autoplay: 1
+                            },
+                            events: {
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    } else {
+                        // Load the next random video
+                        player.loadVideoById(videoIds[randomIndex]);
+                    }
+                })
+                .catch(error => {
+                    console.log("An error occurred: " + error);
+                });
+        }
+
+        // Callback function when the player state changes
+        function onPlayerStateChange(event) {
+            // Check if the video has ended
+            if (event.data === YT.PlayerState.ENDED) {
+                // Generate a new random index
+                randomIndex = Math.floor(Math.random() * totalVideos);
+
+                // Load the next random video
+                player.loadVideoById(videoIds[randomIndex]);
+            }
+        }
+
+        // Load the YouTube API script asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+</body>
+</html>
