@@ -1,0 +1,119 @@
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Meow+Script&display=swap');
+body{
+    background-color: #00000000;
+    font-size: 14px;
+    color: #fff;
+    text-align: left;
+    line-height: 1.2;
+    overflow: hidden;
+    text-align: center;
+}
+#reminder{
+	font-size: 10px;
+	padding-top: 3px;
+    padding-left: 0px;
+}
+#quote{
+	font-size: 10px;
+	padding-top: 5px;
+}
+#dateOfToday{
+	font-family: 'Comfortaa';
+	font-size: 12px;
+}
+#clock{
+	font-family: 'Comfortaa';
+	font-size: 35px;
+    padding: 10px;
+}
+
+</style>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <div id="dateOfToday"></div>
+    <div id="quote"></div>
+</body>
+
+<script>
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+    var monthname = new Array(12);
+    monthname[1] = "Jan";
+    monthname[2] = "Feb";
+    monthname[3] = "Mar";
+    monthname[4] = "Apr";
+    monthname[5] = "May";
+    monthname[6] = "Jun";
+    monthname[7] = "Jul";
+    monthname[8] = "Aug";
+    monthname[9] = "Sep";
+    monthname[10] = "Oct";
+    monthname[11] = "Nov";
+    monthname[12] = "Dec";
+
+
+    
+    var today = new Date();
+    var hrs = today.getHours();
+    var dayOfWeek = weekday[today.getDay()];
+    var dayOfMonth = monthname[today.getMonth()+1];
+    var date = dayOfWeek + ", " + dayOfMonth + " " + today.getDate() + "" ;
+
+        
+    
+    const quotes = [];
+        quotes[0]= "“It is easier to resist at the beginning than at the end.”";
+        quotes[1]= "“Someday is not a day of the week.”";
+        quotes[2]= "“Success is not obtained overnight. It comes in instalments; you get a little bit today, a little bit tomorrow until the whole package is given out. The day you procrastinate, you lose that day’s success.”";
+        quotes[3]= "“Doing things at the last minute reminds us of the importance of doing things at the first minute.”";
+        quotes[4]= "“You cannot escape the responsibility of tomorrow by evading it today.”";
+        quotes[5]= "“By what right do I, who have wasted this day, make claims on tomorrow?”";
+        quotes[6]= "“If you want to get ahead in life, I’ve found that perhaps the most useless word in the world is “tomorrow.”";
+        quotes[7]= "“Don’t let what you cannot do interfere with what you can do.”";
+        quotes[8]= "“Only put off until tomorrow what you are willing to die having left undone”";
+        quotes[9]= "“Do first what you don’t want to do most.”";
+        quotes[10]= "“Do something instead of killing time. Because time is killing you.”";
+        quotes[11]= "“What is deferred is not avoided.”";
+        quotes[12]= "“A year from now you may wish you had started today.”";
+        quotes[13]= "“Procrastination makes easy things hard and hard things harder.”";
+        quotes[14]= "“You don’t have to be great to start, but you have to start to be great.”";
+        quotes[15]= "“There are no shortcuts to any place worth going.”";
+        quotes[16]= "“Success is the sum of small efforts, repeated.”";
+        quotes[17]= "“The best way to predict your future is to create it.”";
+        quotes[18]= "“If you want to make an easy job seem mighty hard, just keep putting off doing it.”";
+        quotes[19]= "“How soon ‘not now’ becomes ‘never’.”";
+
+
+    document.getElementById('dateOfToday').innerHTML =
+        `${date}`;
+    document.getElementById("quote").innerHTML = quotes[Math.floor(Math.random() * 19)];
+    
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+
+      var timeString = hours + ':' + minutes;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    updateTime(); // Call the function initially to prevent delay
+
+    // Update the time every second
+    setInterval(updateTime, 1000);
+    
+</script>
