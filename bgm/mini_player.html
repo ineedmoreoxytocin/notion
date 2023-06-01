@@ -2,49 +2,36 @@
 <html>
 <head>
   <title>Music Player</title>
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
-    body {
+body {
   padding: 0px;
   margin: 0px;
-  background: #1f1f1f;
+  background: #191919;
   font-family: "Roboto", sans-serif;
 }
 
 .container {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
-}
-
-.iphone {
-  width: 100%;
-  height: auto;
   background: #1f1f1f;
-  border-radius: 2em;
   box-sizing: border-box;
-  padding: 2em;
+  padding: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
-.iphone .title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 0.75em;
-  margin-bottom: 2em;
-}
-.iphone .album-cover {
+.album-cover {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  min-height: 130px;
+  justify-content: center;
+  height: 130px;
   background: #161616;
+  width: 100%;
+  margin-top: 20px;
 }
-.iphone .buttons {
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -52,40 +39,40 @@
 }
 
 .neu {
-  box-shadow: -5px -5px 15px 0px #161616, 5px 5px 15px 0px #282828;
   background: #1f1f1f;
-  border-radius: 2em;
+  border-radius: 25px;
   border: 0;
   color: white;
 }
 
 .btn {
-  padding: 10px;
-  margin: 2px;
-  border-radius: 30px;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 50px;
   color: white;
   outline: none;
   cursor: pointer;
-}
-.btn.lg {
-  font-size: 13px;
+  font-size: 19px;
+  border: 0;
+  background: #1f1f1f;
+  box-shadow:  -3px 3px 5px #161616,
+             3px -3px 5px #282828;
 }
 .btn:active {
   cursor: pointer;
-  box-shadow: inset -5px -5px 15px 0px #161616, inset 5px 5px 15px 0px #282828;
+box-shadow: inset -3px 3px 5px #161616,
+            inset 3px -3px 5px #282828;
 }
-.iphone .lyrics {
+.lyrics {
   color: #9cd1d9;
   text-align: center;
   font-size: 12px;  
   background: #1f1f1f;
   border: none;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-.red {
-  color: #e22d49;
-}
 .dropdown {
 justify-content: center;
 display: flex;
@@ -133,18 +120,17 @@ top: 0%;
   </style>
 </head>
 <body>
-  <div class="container">
-  <div class="iphone">
+  <div class="container neu">
     <div class="album-cover">
       <div id="player"></div>
     </div>
     <div class="buttons">
-      <button class="btn lg red neu"><i class='fas'>&#xf004;</i></button>
-      <button class="btn lg neu" onclick="toggleVideo()"><i class='fas'>&#xf04b;</i></button>
-      <button class="btn lg neu" onclick="nextVideo()"><i class='fas'>&#xf04e;</i></button>
+      <button class="btn">❤️</button>
+      <button class="btn" onclick="toggleVideo()">▶️</button>
+      <button class="btn" onclick="nextVideo()">⏭️</button>
     </div>
     <div class="dropdown">
-     <button class="lyrics"><i class="fas fa-angle-up"></i><br>
+     <button class="lyrics">▴<br>
       <span>PLAYLIST</span></button>
       <div class="dropdown-content">
     <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz')">feeling like a princess</button>
@@ -154,9 +140,8 @@ top: 0%;
     <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR')">dark & dramatic</button>
     <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI')">light & romantic</button>
     <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g')">classical orchestra</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill lo-fi</button>
     <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO')">melancholic piano</button>
-</div>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill lo-fi</button>
     </div>
   </div>
 </div>
