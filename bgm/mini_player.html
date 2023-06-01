@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+    body {
+  padding: 0px;
+  margin: 0px;
+  background: #1f1f1f;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.iphone {
+  width: 100%;
+  height: auto;
+  background: #1f1f1f;
+  border-radius: 2em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 130px;
+  background: #161616;
+}
+.iphone .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1em 0;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #161616, 5px 5px 15px 0px #282828;
+  background: #1f1f1f;
+  border-radius: 2em;
+  border: 0;
+  color: white;
+}
+
+.btn {
+  padding: 10px;
+  margin: 2px;
+  border-radius: 30px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+.btn.lg {
+  font-size: 13px;
+}
+.btn:active {
+  cursor: pointer;
+  box-shadow: inset -5px -5px 15px 0px #161616, inset 5px 5px 15px 0px #282828;
+}
+.iphone .lyrics {
+  color: #9cd1d9;
+  text-align: center;
+  font-size: 12px;  
+  background: #1f1f1f;
+  border: none;
+  justify-content: center;
+}
+
+.red {
+  color: #e22d49;
+}
+.dropdown {
+justify-content: center;
+display: flex;
+flex-direction: column;
+transition-delay: 0.2s;
+}
+
+.dropdown-content {
+position: fixed;
+background-color: #161616;
+width: 100%;
+box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+z-index: 1;
+left: 0;
+top: 100%;
+height: 0;
+transition: .5s ease;
+}
+        
+.playlist-button {
+display: inline;
+padding: 6px;
+font-size: 15px;
+background-color: #161616;
+color: #fff;
+border: none;
+cursor: pointer;
+font-family: 'Meow Script', cursive;
+text-align: center;
+margin: auto;
+width: 100%;
+}
+
+.playlist-button:hover {
+ background-color: #2d2e2e;
+}
+
+.dropdown:hover .dropdown-content {
+height: 100%;
+top: 0%;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+  <div class="iphone">
+    <div class="album-cover">
+      <div id="player"></div>
+    </div>
+    <div class="buttons">
+      <button class="btn lg red neu"><i class='fas'>&#xf004;</i></button>
+      <button class="btn lg neu" onclick="toggleVideo()"><i class='fas'>&#xf04b;</i></button>
+      <button class="btn lg neu" onclick="nextVideo()"><i class='fas'>&#xf04e;</i></button>
+    </div>
+    <div class="dropdown">
+     <button class="lyrics"><i class="fas fa-angle-up"></i><br>
+      <span>PLAYLIST</span></button>
+      <div class="dropdown-content">
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz')">feeling like a princess</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v')">feeling like a witch</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3nn9I-fNqo7HukLJsflkjG')">feeling like a fairy</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX')">feeling like a hero</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR')">dark & dramatic</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI')">light & romantic</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g')">classical orchestra</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill lo-fi</button>
+    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO')">melancholic piano</button>
+</div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+        // Variables to store video data
+        var totalVideos;
+        var randomIndex;
+        var videoIds = [];
+        var player;
+
+        // Function to load playlist based on button press
+        function loadPlaylist(playlistId) {
+            // Fetch playlist data using YouTube Data API
+            var apiKey = "AIzaSyAbGq17U0esZWKB2FU6ZhuIzuDq-hCKdio";
+            var apiUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlistId + "&key=" + apiKey;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Get the total number of videos in the playlist
+                    totalVideos = data.pageInfo.totalResults;
+
+                    // Collect the video IDs from the playlist data
+                    videoIds = data.items.map(item => item.snippet.resourceId.videoId);
+
+                    // Generate a random index
+                    randomIndex = Math.floor(Math.random() * totalVideos);
+
+                    // Create a player instance if not already created
+                    if (!player) {
+                        player = new YT.Player('player', {
+                            height: '130',
+                            width: '100%',
+                            videoId: videoIds[randomIndex],
+                            playerVars: {
+                                autoplay: 1,
+                                controls: 1, // Set to 1 to display controls
+         						rel: 0, // Set to 0 to disable related videos
+          						showinfo: 0, // Set to 0 to hide video information
+                            },
+                            events: {
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    } else {
+                        // Load the next random video
+                        player.loadVideoById(videoIds[randomIndex]);
+                    }
+                })
+                .catch(error => {
+                    console.log("An error occurred: " + error);
+                });
+        }
+
+        // Callback function when the player state changes
+        function onPlayerStateChange(event) {
+            // Check if the video has ended
+            if (event.data === YT.PlayerState.ENDED) {
+                // Generate a new random index
+                randomIndex = Math.floor(Math.random() * totalVideos);
+
+                // Load the next random video
+                player.loadVideoById(videoIds[randomIndex]);
+            }
+        }
+
+        // Load the YouTube API script asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+function nextVideo() {
+// Generate a new random index
+                randomIndex = Math.floor(Math.random() * totalVideos);
+
+                // Load the next random video
+                player.loadVideoById(videoIds[randomIndex]);
+}
+// Function to toggle video playback
+function toggleVideo() {
+      if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    }
+    </script>
+</html>
