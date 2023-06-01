@@ -142,9 +142,9 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
-.sidenav2 {
+.sidenav {
   position: absolute;
-  right: -25px;
+  left: -25px;
   transition: 0.3s;
   padding: 5px;
   padding-top: 20%;
@@ -158,8 +158,8 @@ body {
   background-color: #11111100;
   overflow-x: hidden;
 }
-.sidenav2:hover {
-  right: 0px;
+.sidenav:hover {
+  left: 0px;
   background-color: #111;
 }
 /* On smaller screens, decrease video size */
@@ -253,7 +253,7 @@ body {
 <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
 <a class="next" onclick="plusSlide(1)">&#10095;</a>
 
-<div  class="sidenav2">
+<div  class="sidenav">
   <span class="dot" onclick="currentSlide(1)">🕯️</span> 
   <span class="dot" onclick="currentSlide(2)">📜</span>
   <span class="dot" onclick="currentSlide(3)">🌧️</span>
