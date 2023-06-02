@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Music Player</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
 body {
@@ -29,7 +30,7 @@ body {
   height: 130px;
   background: #161616;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .buttons {
   display: flex;
@@ -40,19 +41,21 @@ body {
 
 .neu {
   background: #1f1f1f;
-  border-radius: 25px;
+  border-radius: 15px;
   border: 0;
   color: white;
 }
 
 .btn {
-  padding: 0px;
+  padding: 5px;
   margin: 0px;
   border-radius: 50px;
   color: white;
   outline: none;
   cursor: pointer;
-  font-size: 19px;
+  font-size: 13px;
+  width: 27px;
+  height: 27px;
   border: 0;
   background: #1f1f1f;
   box-shadow:  -3px 3px 5px #161616,
@@ -62,15 +65,6 @@ body {
   cursor: pointer;
 box-shadow: inset -3px 3px 5px #161616,
             inset 3px -3px 5px #282828;
-}
-.lyrics {
-  color: #9cd1d9;
-  text-align: center;
-  font-size: 12px;  
-  background: #1f1f1f;
-  border: none;
-  justify-content: center;
-  margin-bottom: 20px;
 }
 
 .dropdown {
@@ -94,8 +88,8 @@ transition: .5s ease;
         
 .playlist-button {
 display: inline;
-padding: 6px;
-font-size: 15px;
+padding: 3px;
+font-size: 13px;
 background-color: #161616;
 color: #fff;
 border: none;
@@ -125,26 +119,25 @@ top: 0%;
       <div id="player"></div>
     </div>
     <div class="buttons">
-      <button class="btn">❤️</button>
-      <button class="btn" onclick="toggleVideo()">▶️</button>
-      <button class="btn" onclick="nextVideo()">⏭️</button>
-    </div>
-    <div class="dropdown">
-     <button class="lyrics">▴<br>
-      <span>PLAYLIST</span></button>
-      <div class="dropdown-content">
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz')">feeling like a princess</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v')">feeling like a witch</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3nn9I-fNqo7HukLJsflkjG')">feeling like a fairy</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX')">feeling like a hero</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR')">dark & dramatic</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI')">light & romantic</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g')">classical orchestra</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO')">melancholic piano</button>
-    <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill lo-fi</button>
-    </div>
+      <div class="dropdown">
+		<button class="btn">☰</button>
+          <div class="dropdown-content">
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ti997-n4FXqP7uk-sjxSz')">feeling like a princess</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0vIvE4RpSrKknUOdXlll8v')">feeling like a witch</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3nn9I-fNqo7HukLJsflkjG')">feeling like a fairy</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0BGbNATscFTNM70wMDlqHX')">feeling like a hero</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx07LyXoT0un1V5o17xQ4tJR')">dark & dramatic</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3gsoq523qGWGacN39j1TUI')">light & romantic</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2iC1mSmsTNy89FqPZUvy3g')">classical orchestra</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0U6kF9QZKnC69FxhNYXH8_')">chill lo-fi</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Yf_JOxKqbAoh_XAmda-OO')">melancholic piano</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0-4a8T_xM1kcXGFpNgDb3k')">hopelessly romantic</button>
+          </div>
+  		</div>
+      <button class="btn" onclick="toggleVideo()">&#11208;</button>
+      <button class="btn" onclick="nextVideo()"><i class="material-icons" style="font-size: 16px; padding-top: 1px;">skip_next</i></button>
+    </div>    
   </div>
-</div>
 </body>
 <script>
         // Variables to store video data
