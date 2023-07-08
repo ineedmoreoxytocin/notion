@@ -4,13 +4,14 @@
   <title>Music Player</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Meow+Script&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Roboto+Slab&family=Meow+Script&display=swap');
 body {
   padding: 0px;
   margin: 0px;
   background: #191919;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Comfortaa', cursive;
   font-color: white;
+  font-size: 20px;
 }
 .album-cover {
   box-sizing: border-box;
@@ -34,7 +35,7 @@ body {
 }
 
 .dropdown {
-  margin-left: 30px;
+  margin-left: 0px;
   position: relative;
   display: inline-block;
   color: white;
@@ -47,6 +48,7 @@ body {
   background-color: #191919;
   min-width: 150px;
   z-index: 1;
+  margin-top: -20px;
 }
         
 .playlist-button {
@@ -60,7 +62,7 @@ cursor: pointer;
 font-family: "Roboto", sans-serif;
 text-align: center;
 margin: auto;
-margin-left: 150px;
+margin-left: 30px;
 width: 160px;
 }
 
@@ -69,7 +71,7 @@ width: 160px;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: inline;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -79,10 +81,9 @@ width: 160px;
 </head>
 <body>
     <div class="album-cover">
-      <div id="player"></div>
-    </div>
+      <div id="player">
       <div class="dropdown">
-		<p> Take me to a random  <button class="btn">     ▼</button></p>
+		<p> Take me to a random <button class="btn">     ▼</button></p>
           <div class="dropdown-content">
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT')">antique study</button>
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No')">ancient library</button>
@@ -93,9 +94,11 @@ width: 160px;
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy')">tranquil forest</button>
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE')">carriage & train</button>
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R')">cryptic lair</button>
-            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5')">enchanted portal</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5')">fantasy realm</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX')">ambient room</button>
           </div>
    	 </div>   
+     <br>
      <div class="dropdown">
 		<p> Study with a random   <button class="btn">     ▼</button></p>
           <div class="dropdown-content">
@@ -103,9 +106,10 @@ width: 160px;
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX')">50/10 pomodoro</button>
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3Z23Sxmohsoa3Iqfw1ekej')">person in silence</button>
             <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO')">person with timer</button>
-            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx00duRmR9YJdO8dt6usPpS-')">mysterious figure</button>
           </div>
    	 </div>
+     </div>
+</div>
 </body>
 <script>
         // Variables to store video data
