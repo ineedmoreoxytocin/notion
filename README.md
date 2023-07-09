@@ -11,8 +11,11 @@
 * Kanban (v3): https://ineedmoreoxytocin.github.io/notion/friend/cat_friend/cat.html
 * Music side bar: https://ineedmoreoxytocin.github.io/notion/bgm/bgm4.html
 * Music side bar (dark ver): https://ineedmoreoxytocin.github.io/notion/bgm/bgm5.html
+* Music panel (whitenoise only): https://ineedmoreoxytocin.github.io/notion/bgm/random_whitenoise.html
+* Music mp3 player: https://ineedmoreoxytocin.github.io/notion/bgm/mini_player.html
 * Weather: https://ineedmoreoxytocin.github.io/notion/weather.html
 * Timer: https://ineedmoreoxytocin.github.io/notion/timer.html
 * Flip clock: https://ineedmoreoxytocin.github.io/notion/flip_clock.html
 * Small flip clock for embed (without seconds): https://ineedmoreoxytocin.github.io/notion/flip_clock_small.html
+* Countdown timer: https://ineedmoreoxytocin.github.io/notion/countdown.html
 * (Wow I finally learned how to delete things, how amazing = =)
