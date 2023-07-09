@@ -1,45 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Countdown Timer</title>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=EB+Garamond&family=Quicksand&family=Roboto+Slab&display=swap');
-    body {
-      font-family: 'Comfortaa', cursive;
-      text-align: center;
-      background-color: #191919;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-
-    .event {
-      font-size: 15px;
-      margin-top: 15px;
-    }
-
-    .countdown-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: auto;
-      margin-right: 15px;
-      font-size: 12px;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .countdown-item {
-      width: 50px;
-      height: 30px;
-      margin: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 15px;
-      margin-left: 15px;
-    }
-  </style>
-</head>
 <body>
   <div class="event">M C A T</div>
 
@@ -47,6 +7,7 @@
     <div class="countdown-item" id="days">00</div>d
     <div class="countdown-item" id="hours">00</div>h
     <div class="countdown-item" id="minutes">00</div>m
+    <a href="https://github.com/ineedmoreoxytocin/notion/blob/main/countdown.html" class="countdown-button">E D I T</a>
   </div>
 
   <script>
@@ -76,4 +37,64 @@
     }, 1000);
   </script>
 </body>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=EB+Garamond&family=Quicksand&family=Roboto+Slab&display=swap');
+    body {
+      font-family: 'Comfortaa', cursive;
+      text-align: center;
+      background-color: #191919;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .event {
+      font-size: 15px;
+      margin-top: 25px;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      margin-right: 15px;
+      font-size: 12px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .countdown-item {
+      width: 50px;
+      height: 30px;
+      margin: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      margin-left: 15px;
+    }
+    .countdown-button {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #9cd1d9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 10px;
+      font-size: 16px;
+      opacity: 0;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      min-width: 100px;
+    }
+
+    .countdown-container:hover .countdown-button {
+      opacity: 1;
+    }
+  </style>
+</head>
 </html>
