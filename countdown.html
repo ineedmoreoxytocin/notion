@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=EB+Garamond&family=Quicksand&family=Roboto+Slab&display=swap');
+    body {
+      font-family: 'Comfortaa', cursive;
+      text-align: center;
+      background-color: #191919;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .event {
+      font-size: 15px;
+      margin-top: 15px;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      margin-right: 15px;
+      font-size: 12px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .countdown-item {
+      width: 50px;
+      height: 30px;
+      margin: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      margin-left: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="event">M C A T</div>
+
+  <div class="countdown-container">
+    <div class="countdown-item" id="days">00</div>d
+    <div class="countdown-item" id="hours">00</div>h
+    <div class="countdown-item" id="minutes">00</div>m
+  </div>
+
+  <script>
+    // Set the countdown date
+    var countdownDate = new Date('2023-09-01T08:00:00Z').getTime();
+
+    // Update the countdown every second
+    var countdownInterval = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countdownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      // Display the countdown values
+      document.getElementById('days').textContent = days < 10 ? '0' + days : days;
+      document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+      document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').textContent = 'Countdown is over!';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
