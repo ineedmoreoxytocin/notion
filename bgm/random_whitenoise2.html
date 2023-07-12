@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Roboto+Slab&family=Meow+Script&display=swap');
+body {
+  padding: 0px;
+  margin: 0px;
+  background: #191919;
+  font-family: 'Meow Script', cursive;
+  font-color: white;
+  font-size: 16px;
+  overflow-y: hidden;
+}
+.album-cover {
+  box-sizing: border-box;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+}
+        
+.playlist-button {
+  background-color: #11111100;
+  color: #9cd1d9;
+  cursor: pointer;
+  padding: 7px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-family: 'Meow Script', cursive;
+}
+
+.playlist-button:hover {
+ background-color: #9cd1d9;
+ color: white;
+}
+.sidenav {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -135px;
+  background-color: #11111100;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+.sidenav:hover {
+  left: 0px;
+  background-color: #161616;
+}
+.sidenav2 {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: -135px;
+  background-color: #11111100;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+.sidenav2:hover {
+  right: 0px;
+  background-color: #161616;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+  </style>
+</head>
+<body>
+    <div class="album-cover">
+      <div id="player">
+      </div>
+          <div class="sidenav">
+          <p>Take me to a random</p>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT')">antique study</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No')">ancient library</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2')">vintage mansion</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1azoNTCxPrxa3KvyC6n3k5')">mystic apothecary</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o')">cozy cafe</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X')">serene ocean</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy')">tranquil forest</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE')">carriage & train</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R')">cryptic lair</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5')">fantasy realm</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX')">ambient room</button>
+          </div>
+    <div class="sidenav2">
+          <p>Study with a random</p>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA')">25/5 pomodoro</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX')">50/10 pomodoro</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx3Z23Sxmohsoa3Iqfw1ekej')">person in silence</button>
+            <button class="playlist-button" onclick="loadPlaylist('PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO')">person with timer</button>
+          </div>
+   	 </div>
+</div>
+</body>
+<script>
+        // Variables to store video data
+        var totalVideos;
+        var randomIndex;
+        var videoIds = [];
+        var player;
+
+        // Function to load playlist based on button press
+        function loadPlaylist(playlistId) {
+            // Fetch playlist data using YouTube Data API
+            var apiKey = "AIzaSyAbGq17U0esZWKB2FU6ZhuIzuDq-hCKdio";
+            var apiUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlistId + "&key=" + apiKey;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Get the total number of videos in the playlist
+                    totalVideos = data.pageInfo.totalResults;
+
+                    // Collect the video IDs from the playlist data
+                    videoIds = data.items.map(item => item.snippet.resourceId.videoId);
+
+                    // Generate a random index
+                    randomIndex = Math.floor(Math.random() * totalVideos);
+
+                    // Create a player instance if not already created
+                    if (!player) {
+                        player = new YT.Player('player', {
+                            height: '850px',
+                            width: '100%',
+                            videoId: videoIds[randomIndex],
+                            playerVars: {
+                                autoplay: 1,
+                                controls: 1, // Set to 1 to display controls
+         						rel: 0, // Set to 0 to disable related videos
+          						showinfo: 0, // Set to 0 to hide video information
+                            },
+                            events: {
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    } else {
+                        // Load the next random video
+                        player.loadVideoById(videoIds[randomIndex]);
+                    }
+                })
+                .catch(error => {
+                    console.log("An error occurred: " + error);
+                });
+        }
+
+        // Callback function when the player state changes
+        function onPlayerStateChange(event) {
+            // Check if the video has ended
+            if (event.data === YT.PlayerState.ENDED) {
+                // Generate a new random index
+                randomIndex = Math.floor(Math.random() * totalVideos);
+
+                // Load the next random video
+                player.loadVideoById(videoIds[randomIndex]);
+            }
+        }
+
+        // Load the YouTube API script asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+function nextVideo() {
+// Generate a new random index
+                randomIndex = Math.floor(Math.random() * totalVideos);
+
+                // Load the next random video
+                player.loadVideoById(videoIds[randomIndex]);
+}
+// Function to toggle video playback
+function toggleVideo() {
+      if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    }
+    </script>
+</html>
