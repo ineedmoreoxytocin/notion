@@ -227,7 +227,8 @@ body {
   background-color: #11111100;
   color: #11111100;
   transition: 0.5s;
-  padding-top: 20px;
+  padding-top: 30px;
+  overflow: scroll;
 }
 .sidenav:hover {
   left: 0px;
@@ -244,7 +245,8 @@ body {
   background-color: #11111100;
   color: #11111100;
   transition: 0.5s;
-  padding-top: 20px;
+  padding-top: 30px;
+  overflow: scroll;
 }
 .sidenav2:hover {
   right: 0px;
@@ -263,9 +265,10 @@ body {
       </div>
   <!-- Add buttons to define Playlist 1 -->
 <div class="sidenav">
-  <p>Take me to a random:</p>
+  <p>take me to a random:</p>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT')">antique study</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No')">ancient library</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX')">ambient room</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2')">vintage mansion</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1azoNTCxPrxa3KvyC6n3k5')">mystic apothecary</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o')">cozy cafe</button>
@@ -274,18 +277,17 @@ body {
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE')">carriage & train</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R')">cryptic lair</button>
   <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5')">fantasy realm</button>
-  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX')">ambient room</button>
 </div>
   <!-- Add buttons for Playlist 2 -->
   <div class="sidenav2">
-    <p>Use a pomodoro:</p>
+    <p>use a pomodoro</p>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA')">25/5</button>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX')">50/10</button>
-    <p>Someone in silence:</p>
+    <p>someone in silence</p>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx3Z23Sxmohsoa3Iqfw1ekej')">25/5</button>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1uMlu2Znw30rwlhOvOi8K-')">50/10</button>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx3Nvp9eQgMQrS85hFEsEa3J')">no timer</button>
-    <p>Someone with music:</p>
+    <p>someone with music</p>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO')">25/5</button>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1uMlu2Znw30rwlhOvOi8K-')">50/10</button>
     <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw')">no timer</button>
@@ -297,6 +299,6 @@ body {
   <div id="timer" style="position: fixed; bottom: 20px; right: 100px; background-color: rgba(0, 0, 0, 1); padding: 10px; border-radius: 5px; color: white; font-size: 20px; font-family: 'Major Mono Display', monospace; z-index: 2;">s t u d y</div>
 
   <!-- Pause/resume button for the timer -->
-  <button class="control-button" onclick="pauseTimer()" style="position: fixed; bottom: 20px; right: 20px;">⏯️</button>
+  <button class="control-button" onclick="pauseTimer()" style="position: fixed; bottom: 20px; right: 20px;"> ▶|| </button>
 </body>
 </html>
