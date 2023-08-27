@@ -27,7 +27,7 @@ body {
 .album-cover {
   box-sizing: border-box;
   justify-content: center;
-  height: 130px;
+  height: 150px;
   background: #161616;
   width: 100%;
   margin-top: 5px;
@@ -167,7 +167,7 @@ top: 0%;
                     // Create a player instance if not already created
                     if (!player) {
                         player = new YT.Player('player', {
-                            height: '130',
+                            height: '150',
                             width: '100%',
                             videoId: videoIds[randomIndex],
                             playerVars: {
@@ -177,6 +177,7 @@ top: 0%;
           						showinfo: 0, // Set to 0 to hide video information
                             },
                             events: {
+                            	'onReady': onPlayerReady,
                                 'onStateChange': onPlayerStateChange
                             }
                         });
@@ -222,6 +223,11 @@ function toggleVideo() {
       } else {
         player.playVideo();
       }
+    }
+// Callback function when the player is ready
+    function onPlayerReady(event) {
+        // Set the volume to 50% when the video loads
+        event.target.setVolume(30);
     }
     </script>
 </html>
