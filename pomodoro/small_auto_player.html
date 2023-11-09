@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    // Global variables for YouTube player and playlists
+    var player;
+    var playlist1 = "PLCuFZooD8Bx1h5d5SRtvgPLB-Mb5gdZMR"; // Variable to store Playlist 1 ID
+    var playlist2 = "PLCuFZooD8Bx3l6F8zfiCS_tHkbkJD33YS"; // Playlist 2 ID (Always the same)
+    var playlistIndex = 0; // Index for playlist switching
+    var playlistDuration1 = 45; // Duration in minutes for Playlist 1
+    var playlistDuration2 = 5; // Duration in minutes for Playlist 2
+    var playlistDuration = playlistDuration1 * 60000; // Current playlist duration in milliseconds
+    var timerInterval; // Interval ID for the timer
+    var isTimerPaused = false; // Flag to indicate if the timer is paused
+
+    // Function to initialize the YouTube player
+    function onYouTubeIframeAPIReady() {
+      // Load the initial Playlist 1
+      loadPlaylist(playlist1);
+    }
+
+    // Function to load a random video from a playlist into the player
+    function loadPlaylist(playlistId) {
+      // Restarts the timer when a new playlist is loaded
+      clearInterval(timerInterval);
+
+      var apiUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlistId + "&key=AIzaSyAbGq17U0esZWKB2FU6ZhuIzuDq-hCKdio";
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Collect the video IDs from the playlist data
+          var videoIds = data.items.map(item => item.snippet.resourceId.videoId);
+
+          // Generate a random index to choose a video from the playlist
+          var randomIndex = Math.floor(Math.random() * videoIds.length);
+          var videoId = videoIds[randomIndex];
+
+          // Initialize the player with the randomly selected video
+          if (!player) {
+            player = new YT.Player('player', {
+              height: '650px',
+              width: '100%',
+              videoId: videoId,
+              playerVars: {
+                autoplay: 1, // Set to 0 for manual start
+                controls: 0, // Set to 1 to display controls
+                rel: 0, // Set to 0 to disable related videos
+                showinfo: 0, // Set to 0 to hide video information
+              },
+              events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          } else {
+            // If the player already exists, load the new video directly
+            player.loadVideoById(videoId);
+          }
+
+          // Start the interval for playlist switching and update the timer
+          switchPlaylistTimer();
+        })
+        .catch(error => {
+          console.log("An error occurred: " + error);
+        });
+    }
+
+    // Function to handle the player ready event
+    function onPlayerReady(event) {
+      // Nothing to do here for now
+    }
+
+    // Function to handle the player state change event
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        // Play the next video in the playlist
+        playNextVideo();
+      }
+    }
+
+    // Function to play the next video in the playlist
+    function playNextVideo() {
+      // Check if the timer is paused before switching to the next playlist
+      if (!isTimerPaused) {
+        // Switch to the other playlist after the set duration
+        playlistIndex = 1 - playlistIndex;
+        if (playlistIndex === 0) {
+          // If switching back to Playlist 1
+          loadPlaylist(playlist1);
+        } else {
+          // If switching to Playlist 2
+          loadPlaylist(playlist2);
+        }
+      }
+    }
+
+    // Function to update the timer and switch playlists after the set duration
+    function switchPlaylistTimer() {
+      // Set the playlist duration based on the current playlist index
+      playlistDuration = playlistIndex === 0 ? playlistDuration1 * 60000 : playlistDuration2 * 60000;
+
+      // Update the timer with the remaining time for the current playlist
+      updateTimer();
+
+      // Set an interval to update the timer every second
+      timerInterval = setInterval(function() {
+        // Reduce the remaining time by 1 second for the current playlist
+        if (!isTimerPaused) {
+          playlistDuration -= 1000;
+
+          // Update the timer with the new remaining time for the current playlist
+          updateTimer();
+        }
+
+        // Check if the current playlist duration has elapsed
+        if (playlistDuration <= 0) {
+          // Play the next video in the playlist
+          playNextVideo();
+
+          // Reset the playlist duration for the new playlist
+          playlistDuration = playlistIndex === 0 ? playlistDuration1 * 60000 : playlistDuration2 * 60000;
+        }
+      }, 1000); // Update the timer every second
+    }
+
+    // Function to update the floating timer
+    function updateTimer() {
+      // Convert the remaining time to minutes and seconds
+      var minutes = Math.floor(playlistDuration / 60000);
+      var seconds = Math.floor((playlistDuration % 60000) / 1000);
+
+      // Get the timer element and update its content
+      var timerElement = document.getElementById("timer");
+      timerElement.innerText = minutes + " mins " + seconds + " secs";
+    
+    var timerElement = document.getElementById("prompt");
+      timerElement.innerText = "current session ends in ";
+    }
+
+    // Function to switch to Playlist 1 based on the button click
+    function switchToPlaylist1(playlistId) {
+      // Only switch if the current Playlist 1 is different from the new one
+      if (playlist1 !== playlistId) {
+        playlist1 = playlistId;
+        playlistIndex = 0; // Reset the index for Playlist 1
+        loadPlaylist(playlist1);
+      }
+    }
+
+    // Function to pause/resume the timer
+    function pauseTimer() {
+      isTimerPaused = !isTimerPaused;
+
+      // Update the timer with the remaining time for the current playlist
+      updateTimer();
+    }
+  </script>
+  <script src="https://apis.google.com/js/client.js?onload=onYouTubeIframeAPIReady"></script>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Major+Mono+Display&family=Roboto+Slab&family=Meow+Script&display=swap');
+body {
+  padding: 0px;
+  margin: 0px;
+  background: #191919;
+  font-family: 'Meow Script', cursive;
+  font-color: white;
+  font-size: 16px;
+  overflow-y: hidden;
+}
+.album-cover {
+  box-sizing: border-box;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin-top: 0px;
+  color: white;
+  text-align: center;
+}
+        
+.playlist-button {
+  background-color: #11111100;
+  color: #9cd1d9;
+  cursor: pointer;
+  padding: 7px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-family: 'Meow Script', cursive;
+}
+
+.playlist-button:hover {
+ background-color: #9cd1d9;
+ color: white;
+}
+.control-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #9cd1d9;
+  cursor: pointer;
+  padding: 1px;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  padding: 10px; 
+  border-radius: 5px; 
+  z-index: 2;
+}
+
+.control-button:hover {
+ background-color: #9cd1d9;
+ color: white;
+}
+.sidenav {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -120px;
+  background-color: #11111100;
+  color: #11111100;
+  transition: 0.5s;
+  padding-top: 30px;
+  overflow: scroll;
+}
+.sidenav:hover {
+  left: 0px;
+  background-color: #161616;
+  color: white;
+}
+.sidenav2 {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: -120px;
+  background-color: #11111100;
+  color: #11111100;
+  transition: 0.5s;
+  padding-top: 30px;
+  overflow: scroll;
+}
+.sidenav2:hover {
+  right: 0px;
+  background-color: #161616;
+  color: white;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+</style>
+</head>
+<body>
+<div class="album-cover">
+  <!-- Add a container for the YouTube player -->
+      <div id="player">
+      </div>
+  <!-- Add buttons to define Playlist 1 -->
+<div class="sidenav">
+  <p>take me to a random:</p>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0gFt5M0q1U3nFGnLg9ZOrT')">antique study</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1nTeklBTXd25MqfSMkI_No')">ancient library</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2GAtdh6HpCX_d40tQNkQUX')">ambient room</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0aPHEqV_goB2wBJBvC76Z2')">vintage mansion</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1azoNTCxPrxa3KvyC6n3k5')">mystic apothecary</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx225AuZKdL67ZGPstLMvn8o')">cozy cafe</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx3DrCvKhhRWumvqMK7qCO2X')">serene ocean</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1yhH28ELuFSC_aY9JYnHAy')">tranquil forest</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2Do4cFeBRAerMdPIwJofVE')">carriage & train</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0aSiYJLpGjQMIWY_xpMw0R')">cryptic lair</button>
+  <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx2LF5E1BybLQqyNz5TNSsC5')">fantasy realm</button>
+</div>
+  <!-- Add buttons for Playlist 2 -->
+  <div class="sidenav2">
+    <p>use a pomodoro</p>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx32OeoBsRsyr_47SjVVmRCA')">25/5</button>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1Ho0ljNfSJ-AHXrlet8nyX')">50/10</button>
+    <p>someone in silence</p>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx3Z23Sxmohsoa3Iqfw1ekej')">25/5</button>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1uMlu2Znw30rwlhOvOi8K-')">50/10</button>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx3Nvp9eQgMQrS85hFEsEa3J')">no timer</button>
+    <p>someone with music</p>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx0gs0hiTbmN_SEuoJTAjxdO')">25/5</button>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx1uMlu2Znw30rwlhOvOi8K-')">50/10</button>
+    <button class="playlist-button" onclick="switchToPlaylist1('PLCuFZooD8Bx214V9_Bpp4sW8ieAgaw0jw')">no timer</button>
+  </div>
+   	 </div>
+</div>
+  <!-- Floating timer for playlist switch -->
+  <div id="prompt" style="position: fixed; bottom: 20px; right: 350px; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 5px; color: white; font-size: 20px; font-family: 'Major Mono Display', monospace;"> </div>
+  <div id="timer" style="position: fixed; bottom: 20px; right: 100px; background-color: rgba(0, 0, 0, 1); padding: 10px; border-radius: 5px; color: white; font-size: 20px; font-family: 'Major Mono Display', monospace; z-index: 2;">s t u d y</div>
+
+  <!-- Pause/resume button for the timer -->
+  <button class="control-button" onclick="pauseTimer()" style="position: fixed; bottom: 20px; right: 20px;"> ▶|| </button>
+</body>
+</html>
