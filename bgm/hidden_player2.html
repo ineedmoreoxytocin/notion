@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>Hover Page Transition</title>
+<style>
+/* Reset default margin and padding */
+body, h1, h2, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hover-section,
+.hidden-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.hover-section {
+  background-color: lightgray;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.hover-section:hover {
+  opacity: 0;
+}
+
+.hidden-section {
+  background-color: lightgreen;
+  opacity: 0;
+}
+
+.hidden-section:hover {
+  opacity: 1;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="hover-section">
+        <embed type="text/html" src="https://indify.co/widgets/live/clock/DpKmR4BVsS2gVkuzQM8d" width="100%" height="100%">
+      </div>
+      <div class="hidden-section">
+        <embed type="text/html" src="https://ineedmoreoxytocin.github.io/notion/bgm/mini_player2.html" width="100%" height="100%">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
