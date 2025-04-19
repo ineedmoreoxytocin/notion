@@ -150,7 +150,7 @@ margin-left: 15%;
           <span class="separator">:</span>
           <span id="js-seconds">00</span>
         </div>
-        <button class="main-button" data-action="start" id="js-btn">
+        <button class="main-button" data-action="start" id="js-btn" onclick="toggleVideo()">
           Start
         </button>
         </div>
@@ -183,10 +183,12 @@ margin-left: 15%;
       </div>
     </main>
     <div class="hidden">
-      <audio src="backtowork.mp3" data-sound="pomodoro"></audio>
-      <audio src="break.mp3" data-sound="shortBreak"></audio>
-      <audio src="break.mp3" data-sound="longBreak"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3" data-sound="pomodoro"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3" data-sound="shortBreak"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3" data-sound="longBreak"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/thunderstorm.mp3" data-sound="rain"></audio>
     </div>
+    <div id="player"></div>
 <script>
   const timer = {
   pomodoro: 45,
@@ -271,6 +273,7 @@ function startTimer() {
       }
 
       document.querySelector(`[data-sound="${timer.mode}"]`).play();
+      
       startTimer();
     }
   }, 1000);
@@ -340,6 +343,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   switchMode('pomodoro');
 });
+
+// Load the YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var isPlaying = false;
+
+        // Define video IDs based on timer mode
+        var videoIds = {
+            pomodoro: "2IhcIUP2XLs", // Replace with a study-focused video
+            shortBreak: "R-PdHLHXjIg", // Replace with a relaxing break video
+            longBreak: "cUlUak0_0GQ" // Replace with a chill ambiance video
+        };
+
+        function onYouTubeIframeAPIReady() {
+            var currentMode = getTimerMode(); // Get the current mode
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: videoIds[currentMode], // Set video based on mode
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1
+                }
+            });
+        }
+
+        function toggleVideo() {
+            if (isPlaying) {
+                player.pauseVideo(); // Stop the video
+            } else {
+                player.playVideo(); // Play the video
+            }
+            isPlaying = !isPlaying; // Toggle play/pause state
+        }
+
+        function getTimerMode() {
+            // Simulated mode selection (Replace this with actual timer mode logic)
+            return timer.mode || "pomodoro"; // Default to "pomodoro"
+        }
+        
+
 </script>
   </body>
 </html>
