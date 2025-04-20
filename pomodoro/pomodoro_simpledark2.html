@@ -304,6 +304,7 @@ function switchMode(mode) {
   document.getElementById("js-clock").style.color = `var(--${mode})`;
 
   updateClock();
+  updateAudio();
 }
 
 function handleMode(event) {
@@ -369,7 +370,6 @@ function updateAudio() {
         audioPlayer.src = audioFiles[currentMode]; // Update audio file
         audioPlayer.play(); // Ensure playback starts automatically
     }
-    toggleAudio();
 }
 
 function toggleAudio() {
@@ -387,6 +387,7 @@ function getTimerMode() {
 
 // Monitor mode changes and update music accordingly
 document.getElementById("js-btn").addEventListener("click", updateAudio);
+document.getElementById("js-btn").addEventListener("click", toggleAudio);
 document.getElementById("js-mode-buttons").addEventListener("click", updateAudio); // Listen for mode changes
       
 </script>
