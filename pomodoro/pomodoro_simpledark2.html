@@ -1,0 +1,394 @@
+<html lang="en">
+  <head>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+html {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark: #191919;
+  --pomodoro: #9cd1d9;
+  --shortBreak: #e8b5c5;
+  --longBreak: #98cc93;
+  --bgc: var(--dark);
+}
+body {
+  background-color: var(--bgc);
+  transition: background-color 1s ease;
+  user-select: none;
+}
+
+progress {
+  border-radius: 2px;
+  width: 100%;
+  height: 12px;
+  position: fixed;
+  top: 0;
+}
+
+progress::-webkit-progress-bar {
+ background-color: rgba(0, 0, 0, 0.1);
+}
+
+progress::-webkit-progress-value {
+  background-color: #fff;
+}
+
+.progress-bar{
+  color:#fff;
+  font-family: arial, sans-serif;
+  text-align: right;
+  font-size: 11px;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.clock {
+  font-size: 15rem;
+  line-height: 1;
+  display: flex;
+  margin-top:15px;
+  margin-left:15px;
+  align-items: center;
+  font-family: arial, sans-serif;
+  color:#fff;
+}
+
+.mode-button {
+  font-size: 10px;
+  height: auto;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 600;
+  color: #fff;
+  border: 2px solid transparent;
+  margin: 5px 1px;
+  border-radius: 4px;
+  padding: 5px 5px;
+  background: none;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+}
+.mode-button.active {
+  border: 2px solid #fff;
+}
+
+.main-button {
+  cursor: pointer;
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+  font-size: 18px;
+  height: 50px;
+  text-transform: uppercase;
+  color: var(--bgc);
+  font-weight: bold;
+  width: 110px;
+  background-color: white;
+  border-width: initial;
+  border-style: none;
+  margin: 10px 25px 0px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  transition: color 0.5s ease-in-out 0s;
+}
+
+button:focus, button:active {
+  outline: none;
+}
+
+.main-button.active {
+  transform: translateY(6px);
+  box-shadow: none;
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 550px) {
+  .clock {
+    font-size: 50px;
+  }
+}
+
+
+.top {
+width: 100%;
+float: left;
+margin-left: 15%;
+}
+.bottom {
+width: 100%;
+margin-top: 90%;
+margin-left: 15%;
+}
+
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <progress id="js-progress" value="0"></progress>
+      <div class="progress-bar" id="progress" ></div>
+      <div class="timer">
+      <div class="top">
+        <div class="clock" id="js-clock">
+          <span id="js-minutes">45</span>
+          <span class="separator">:</span>
+          <span id="js-seconds">00</span>
+        </div>
+        <button class="main-button" data-action="start" id="js-btn">
+          Start
+        </button>
+        </div>
+      	<div class="bottom">
+        <div class="button-group mode-buttons" id="js-mode-buttons">
+          <button
+            data-mode="pomodoro"
+            class="button active mode-button"
+            id="js-pomodoro"
+          >
+           STUDY
+          </button>
+          <button
+            data-mode="shortBreak"
+            class="button mode-button"
+            id="js-short-break"
+          >
+            BREAK
+          </button>
+          <button
+            data-mode="longBreak"
+            class="button mode-button"
+            id="js-long-break"
+          >
+            CHILL
+          </button>
+        </div>
+        </div>
+        
+      </div>
+    </main>
+    <div class="hidden">
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3" data-sound="pomodoro"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3" data-sound="shortBreak"></audio>
+      <audio src="https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/pomodone.mp3" data-sound="longBreak"></audio>
+    </div>
+    <div id="player"></div>
+<script>
+  const timer = {
+  pomodoro: 45,
+  shortBreak: 5,
+  longBreak: 15,
+  longBreakInterval: 3,
+  sessions: 0,
+};
+
+let interval;
+
+function getRemainingTime(endTime) {
+  const currentTime = Date.parse(new Date());
+  const difference = endTime - currentTime;
+
+  const total = parseInt(difference / 1000);
+  const minutes = parseInt((total / 60) % 60);
+  const seconds = parseInt(total % 60);
+
+  return {
+    total,
+    minutes,
+    seconds,
+  };
+}
+
+function updateClock() {
+  const { remainingTime } = timer;
+  const minutes = `${remainingTime.minutes}`.padStart(2, '0');
+  const seconds = `${remainingTime.seconds}`.padStart(2, '0');
+
+  const min = document.getElementById('js-minutes');
+  const sec = document.getElementById('js-seconds');
+  const time = `${minutes}:${seconds}`;
+  min.textContent = minutes;
+  sec.textContent = seconds;
+
+  document.title = `${time} - Pomodoro Clock`;
+  const progress = document.getElementById('js-progress');
+  progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
+  if (timer.mode === 'pomodoro') {
+ 	 let num = progress.value/60;
+ 	 document.getElementById("progress").innerHTML = num.toPrecision(2) + " mins";
+	} else {
+ 	 document.getElementById("progress").innerHTML = "";
+	}
+}
+
+function startTimer() {
+  let { total } = timer.remainingTime;
+  const endTime = Date.parse(new Date()) + total * 1000;
+
+  if (timer.mode === 'pomodoro') timer.sessions++;
+
+  mainButton.dataset.action = 'stop';
+  mainButton.classList.add('active');
+  mainButton.textContent = 'stop';
+
+  interval = setInterval(function() {
+    timer.remainingTime = getRemainingTime(endTime);
+    total = timer.remainingTime.total;
+    updateClock();
+    if (total <= 0) {
+      clearInterval(interval);
+
+      switch (timer.mode) {
+        case 'pomodoro':
+          if (timer.sessions % timer.longBreakInterval === 0) {
+            switchMode('longBreak');
+          } else {
+            switchMode('shortBreak');
+          }
+          break;
+        default:
+          switchMode('pomodoro');
+      }
+
+      if (Notification.permission === 'granted') {
+        const text =
+          timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+        new Notification(text);
+      }
+
+      document.querySelector(`[data-sound="${timer.mode}"]`).play();
+      
+      startTimer();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(interval);
+
+  mainButton.dataset.action = 'start';
+  mainButton.classList.remove('active');
+  mainButton.textContent = 'start';
+}
+
+function switchMode(mode) {
+  timer.mode = mode;
+  timer.remainingTime = {
+    total: timer[mode] * 60,
+    minutes: timer[mode],
+    seconds: 0,
+  };
+
+  document
+    .querySelectorAll('button[data-mode]')
+    .forEach(e => e.classList.remove('active'));
+  document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+  document
+    .getElementById('js-progress')
+    .setAttribute('max', timer.remainingTime.total);
+  document.getElementById("js-clock").style.color = `var(--${mode})`;
+
+  updateClock();
+}
+
+function handleMode(event) {
+  const { mode } = event.target.dataset;
+
+  if (!mode) return;
+
+  timer.sessions = 0;
+  switchMode(mode);
+  stopTimer();
+}
+
+const buttonSound = new Audio('button-sound.mp3');
+const mainButton = document.getElementById('js-btn');
+mainButton.addEventListener('click', () => {
+  const { action } = mainButton.dataset;
+  buttonSound.play();
+  if (action === 'start') {
+    startTimer();
+  } else {
+    stopTimer();
+  }
+});
+
+const modeButtons = document.querySelector('#js-mode-buttons');
+modeButtons.addEventListener('click', handleMode);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if ('Notification' in window && Notification.permission !== 'denied') {
+    Notification.requestPermission().then(function(permission) {
+      if (permission === 'granted') {
+       
+      }
+    });
+  }
+
+  switchMode('pomodoro');
+});
+
+// Define audio files based on timer mode
+var audioFiles = {
+    pomodoro: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/Library.mp3",
+    shortBreak: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3",
+    longBreak: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3"
+};
+
+// Create an audio element
+var audioPlayer = new Audio();
+audioPlayer.loop = true; // Enable looping
+var currentMode = "pomodoro"; // Default mode
+
+// Initialize audio source on page load
+document.addEventListener("DOMContentLoaded", () => {
+    currentMode = getTimerMode(); // Set initial mode
+    audioPlayer.src = audioFiles[currentMode]; // Set the initial audio file
+    console.log("Audio initialized:", audioPlayer.src);
+});
+
+function updateAudio() {
+    var newMode = getTimerMode(); // Get the current mode
+    if (newMode !== currentMode) {
+        currentMode = newMode;
+        audioPlayer.src = audioFiles[currentMode]; // Update audio file
+        audioPlayer.play(); // Ensure playback starts automatically
+    }
+    toggleAudio();
+}
+
+function toggleAudio() {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+}
+
+// Function to get the current timer mode
+function getTimerMode() {
+    return timer.mode || "pomodoro"; // Replace with actual timer mode logic
+}
+
+// Monitor mode changes and update music accordingly
+document.getElementById("js-btn").addEventListener("click", updateAudio);
+document.getElementById("js-mode-buttons").addEventListener("click", updateAudio); // Listen for mode changes
+      
+</script>
+  </body>
+</html>
