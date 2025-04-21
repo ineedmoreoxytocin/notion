@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Define audio files based on timer mode
 var audioFiles = {
-    pomodoro: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/Library.mp3",
+    pomodoro: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/muffled_rain.mp3",
     shortBreak: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3",
     longBreak: "https://raw.githubusercontent.com/ineedmoreoxytocin/notion/main/media/windchime.mp3"
 };
@@ -355,6 +355,7 @@ var audioFiles = {
 var audioPlayer = new Audio();
 audioPlayer.loop = true; // Enable looping
 var currentMode = "pomodoro"; // Default mode
+audioPlayer.volume = 0.6;
 
 // Initialize audio source on page load
 document.addEventListener("DOMContentLoaded", () => {
