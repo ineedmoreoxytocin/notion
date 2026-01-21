@@ -124,8 +124,6 @@ top: 0%;
        <button class="btn" onclick="loadPlaylist('PLCuFZooD8Bx0-63aHRex3oyjVG3IlHnDT')">🍒</button>
        <button class="btn" onclick="loadPlaylist('PLCuFZooD8Bx12sG7U92El6j16MZHIC3Zr')">🙆🏻‍</button>
        <button class="btn" onclick="loadPlaylist('PLCuFZooD8Bx2sPGs1jRvg63v2Rr-7_fEa')">🧘🏻‍</button>
-      <button class="btn" onclick="toggleVideo()">&#11208;</button>
-      <button class="btn" onclick="nextVideo()"><i class="material-icons" style="font-size: 16px; padding-top: 1px;">skip_next</i></button>
     </div>    
   </div>
 </body>
@@ -162,7 +160,7 @@ top: 0%;
                             videoId: videoIds[randomIndex],
                             playerVars: {
                                 autoplay: 1,
-                                controls: 0, // Set to 1 to display controls
+                                controls: 1, // Set to 1 to display controls
          						rel: 0, // Set to 0 to disable related videos
           						showinfo: 0, // Set to 0 to hide video information
                             },
@@ -217,7 +215,7 @@ function toggleVideo() {
 // Callback function when the player is ready
     function onPlayerReady(event) {
         // Set the volume to 50% when the video loads
-        event.target.setVolume(30);
+        event.target.setVolume(100);
     }
     </script>
 </html>
